@@ -1,14 +1,13 @@
-.main__header
-    margin-bottom: 108px
-    
 .header
     position: relative
     z-index: 3
-    display: flex
+    +row-flex
     align-items: center
     justify-content: space-between
     padding-top: 32px
     height: 56px
+    > *
+        +col
     &__nav
         margin-left: -64px
 

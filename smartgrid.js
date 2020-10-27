@@ -11,16 +11,19 @@ const smartgridSettings = {
         xxx: {
             width: "1500px",
         },
+        xl: {
+            width: "1200px",
+        },
+        lg: {
+            width: "992px",
+        },
         md: {
-            width: "920px",
+            width: "768px",
         },
         sm: {
-            width: "720px"
-        },
-        xs: {
             width: "576px"
         },
-        xxs: {
+        xs: {
             width: "420px"
         }
     }
