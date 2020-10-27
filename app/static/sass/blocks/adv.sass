@@ -1,0 +1,47 @@
+.adv
+    &__title
+        margin-bottom: 50px
+    &__content
+        display: grid
+        grid-template-columns: 1fr 2fr 1fr
+    &__adv-img
+        text-align: center
+    
+.adv-icons
+    &__block
+        position: relative
+        > p
+            max-width: 240px
+        &:not(:last-child)
+            margin-bottom: 80px
+        &:last-child
+            .adv-icons__line
+                top: 0px
+    &__adv-icon
+        margin-bottom: 20px
+    &--2
+        margin-left: auto
+        text-align: right
+        .adv-icon
+            margin-left: auto
+    &__line
+        position: absolute
+        top: 30px
+
+.adv-icons.adv-icons--1
+    .adv-icons__line
+        right: -20px
+
+.adv-icons.adv-icons--2
+    .adv-icons__line
+        left: -90px
+        
+.adv-icon
+    display: flex
+    border-radius: 6px
+    justify-content: center
+    align-items: center
+    width: 61px
+    height: 61px
+    background-color: var(--color-icon-bg)
+    text-align: center
