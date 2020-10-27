@@ -1,9 +1,7 @@
-.main__hero
-    margin-bottom: 189px
-    
 .hero
     +row-flex
     justify-content: space-between
+    min-height: calc(100vh - 56px)
 
 .hero-img
     +col
@@ -52,6 +50,7 @@
         font-size: 18px
         border-radius: 4px
         transition: background-color .3s, border .3s
+        margin-bottom: 199px
         &:hover
             border: 1px solid var(--color-blue)
             background-color: transparent

@@ -1,0 +1,66 @@
+.feedback
+    padding-bottom: 120px
+    &__content
+       +row-flex
+       align-items: center
+    &__title
+        margin-bottom: 60px
+    &__link
+        user-select: none
+        color: var(--color-blue)
+
+    
+.feedback__gallery-top
+    max-width: 410px
+    .swiper-slide
+        background-size: cover
+        background-position: center
+        width: 410px
+        height: 410px
+        border-radius: 10px
+
+.feedback__gallery-thumbs
+    padding: 20px
+    .swiper-slide
+        cursor: pointer
+        background-size: cover
+        background-position: center
+        border-radius: 80px
+        max-width: 80px
+        height: 80px
+    .swiper-slide-active 
+        &::after
+            content: ''
+            display: block
+            position: absolute
+            top: -10px
+            left: -10px
+            right: -10px
+            bottom: -10px
+            background-color: transparent
+            border: 1px solid var(--color-blue)
+            border-radius: 100%
+
+.feedback__gallery-text
+    font-size: 18px
+    .swiper-slide
+        height: 190px
+
+.feedback__gallery-content
+    max-width: 740px
+
+.feedback-img
+    +col
+
+.feedback-text
+    +col
+    margin-left: auto
+    &__date
+        display: block
+        font-size: 24px
+        margin-bottom: 20px
+    &__author
+        display: block
+        font-weight: 700
+        margin-bottom: 30px
+    
