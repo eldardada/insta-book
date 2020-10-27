@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
     <title>Анатолий Милов</title>
 </head>
 <body>
-    <main class="main">
+    <main id="main" class="main">
         <div class="container main__container">
             <header class="header main__header">
                 <div class="logo header__logo">
@@ -21,9 +25,9 @@
                 </div>
                 <nav class="header__nav">
                     <ul class="navigation">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">Преимущества</a></li>
-                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="#main">Главная</a></li>
+                        <li><a href="#advantages">Преимущества</a></li>
+                        <li><a href="#feedback">Отзывы</a></li>
                     </ul>
                 </nav>
                 <a href="#" class="main-btn">Заказать звонок</a>
@@ -33,6 +37,7 @@
                     <div>
                         <img class="hero-img__main-img" src="./static/img/hero-img.png" alt="Книга Анатолия Милова">
                         <img class="hero-img__effects-img" src="./static/img/hero-effects-img.png" alt="Книга Анатолия Милова">
+                        <img class="main__bg" src="static/img/main-bg.png" alt="">
                     </div>
                     <a class="hero-img__link" href="#"><span>&rarr;</span>Читать отзывы</a>
                 </div>
@@ -57,7 +62,7 @@
                 </div>
             </section>
             <section class="adv main__adv">
-                <h2 class="adv__title">Преимущества книги</h2>
+                <h2 class="adv__title" id="advantages">Преимущества книги</h2>
                 <div class="adv__content">
                     <div class="adv-icons adv-icons--1">
                         <div class="adv-icons__block">
@@ -111,7 +116,7 @@
                 </div>
             </section>
             <section class="feedback">
-                <h2 class="feedback__title">Отзывы после прочтения книги</h2>
+                <h2 id="feedback" class="feedback__title">Отзывы после прочтения книги</h2>
                 <div class="feedback__content">
                     <div class="feedback-img">
                         <div class="swiper-container gallery-top feedback__gallery-top">
@@ -174,9 +179,6 @@
                                 <small class="swiper-slide">Ярослав 7</small>
                             </div>
                         </div>
-
-                        
-                        
                         <div class="swiper-container gallery-thumbs feedback__gallery-thumbs">
                             <div class="swiper-wrapper">
                               <div class="swiper-slide" style="background-image:url(./static/img/feedback-img.jpg)"></div>
@@ -191,7 +193,25 @@
                     </div>  
                 </div>
             </section>
-            
+            <footer class="footer">
+                <div class="logo header__logo">
+                    <a href="#">
+                        <img class="logo__img" src="./static/img/logo.png" alt="logo">
+                    </a>
+                    <div class="logo__text">
+                        <h4 class="logo__title">Анатолий Милов</h4>
+                        <p class="logo__subtitle">Эксперт по увеличению продаж в соц. сетях</p>
+                    </div>
+                </div>
+                <nav class="header__nav">
+                    <ul class="navigation">
+                        <li><a href="#main">Главная</a></li>
+                        <li><a href="#advantages">Преимущества</a></li>
+                        <li><a href="#feedback">Отзывы</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="main-btn">Заказать звонок</a>
+            </footer>
         </div>
     </main>
 

@@ -1,9 +1,14 @@
+html
+    scroll-behavior: smooth
+
+
 body
     color: var(--color-white)
     font-size: $bodyFz
     font-family: '#{$mainFont}', sans-serif
     font-weight: $bodyFw
     line-height: 1
+
 
 .swiper-arrow
     fill: #686868
@@ -16,10 +21,11 @@ body
     > *
         cursor: pointer
         svg
-            transition: fill .3s
+            transition: fill .3s, transform .3s
         &:hover
             svg
                 fill: var(--color-white)
+                transform: scale(1.2)
 
 .main-btn
     font-size: 16px

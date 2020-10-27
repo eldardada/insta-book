@@ -6,8 +6,22 @@
     &__title
         margin-bottom: 60px
     &__link
+        display: inline-block
         user-select: none
         color: var(--color-blue)
+        transition: color .3s
+        &::after
+            content: ''
+            display: block
+            margin-top: 2px 
+            width: 100%
+            height: 1px
+            background-color: var(--color-blue)
+            transition: opacity .3s
+        &:hover
+            color: var(--color-white)
+            &::after
+                opacity: 0
 
     
 .feedback__gallery-top
