@@ -4,7 +4,7 @@ const smartgridSettings = {
     offset: '30px', /* gutter width px || % || rem */
     mobileFirst: false, /* mobileFirst ? 'min-width' : 'max-width' */
     container: {
-        maxWidth: '1381px', /* max-width оn very large screen */
+        maxWidth: '1201px', /* max-width оn very large screen */
         fields: '15px' /* side fields */
     },
     breakPoints: {

@@ -1,0 +1,74 @@
+.hero
+    +row-flex
+    justify-content: space-between
+
+.hero-img
+    +col
+    margin-left: 3px
+    &__main-img
+        position: relative
+        z-index: 2
+    &__link
+        position: relative
+        z-index: 3
+        display: block
+        transition: color .3s
+        font-size: 12px
+        margin-left: 10px
+        > span
+            font-size: 22px
+        &:hover
+            color: var(--color-blue)
+    > div
+        position: relative
+    &__effects-img
+        z-index: 1
+        position: absolute
+        min-width: 898px
+        height: 890px
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+
+.hero-text
+    position: relative
+    z-index: 3
+    +col
+    > .title
+        margin-bottom: 40px
+    > .subtitle
+        margin-bottom: 48px
+    &__icons
+        margin-bottom: 50px
+    &__btn
+        display: inline-block
+        background-color: var(--color-blue)
+        color: var(--color-white)
+        border: 1px solid transparent
+        padding: 17px 69px
+        font-size: 18px
+        border-radius: 4px
+        transition: background-color .3s, border .3s
+        &:hover
+            border: 1px solid var(--color-blue)
+            background-color: transparent
+
+.hero-icons
+    display: flex
+    &__icon
+        &:not(:last-child)
+            margin-right: 89px
+        > img
+            display: block
+            margin: 0 auto
+        > p
+            max-width: 145px
+            font-size: 18px
+            margin-top: 30px
+            &:first-child
+                max-width: 125px
+                
+                
+            
+            
+            
