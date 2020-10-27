@@ -1,0 +1,28 @@
+.header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding-top: 40px
+    padding-bottom: 40px
+
+.logo
+    display: flex
+    &__text
+        margin-left: 25px
+    &__title
+        margin-bottom: 10px
+    &__subtitle
+        color: #7e88a1
+        font-size: 12px
+        max-width: 150px
+
+.navigation
+    display: flex
+    > li
+        &:not(:last-child)
+            margin-right: 50px
+        > a
+            transition: color .3s
+            &:hover
+                color: var(--color-blue)
+                
