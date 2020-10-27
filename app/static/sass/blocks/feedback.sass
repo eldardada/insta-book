@@ -1,8 +1,11 @@
 .feedback
-    padding-bottom: 120px
+    padding-bottom: 60px
+    display: flex
+    flex-direction: column
     &__content
        +row-flex
        align-items: center
+       margin-bottom: 35px
     &__title
         margin-bottom: 60px
     &__link
@@ -22,7 +25,8 @@
             color: var(--color-white)
             &::after
                 opacity: 0
-
+    &__btn
+        margin: 0 auto
     
 .feedback__gallery-top
     max-width: 410px
