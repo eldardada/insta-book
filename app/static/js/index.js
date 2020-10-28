@@ -13,7 +13,13 @@ window.addEventListener('load', function() {
         spaceBetween: 20,
         freeMode: true,
         allowTouchMove: false,
-        watchSlidesProgress: true
+        watchSlidesProgress: true,
+        breakpoints: {
+            901: {
+                loop: false,
+                watchSlidesProgress: false
+            }
+        }
     });
     
     const galleryTop = new Swiper('.feedback__gallery-top', {
@@ -46,18 +52,9 @@ window.addEventListener('load', function() {
     });
     
     
-    galleryTop.on('slideChange', e => {
-        let index = e.activeIndex;
-    
-        feedbackContentSlider.forEach(el => {
-            el.slideTo(index);
-        });
-        
-    });
+    galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
 
-    galleryThumbs.on('slideChange', function(e) {
-        if(galleryThumbs.isEnd) console.log(1);
-    });
+  
     
 });
 
