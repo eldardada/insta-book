@@ -161,13 +161,13 @@ const images = () => {
            .pipe(browserSync.stream())
 }
 
-const fontTtf2Woff = () => {
+export const fontTtf2Woff = () => {
   return gulp.src('./app/static/fonts/**/*.ttf')
          .pipe(ttf2woff())
          .pipe(gulp.dest('./dist/static/fonts/'));
 }
 
-const fontTtf2Woff2 = () => {
+export const fontTtf2Woff2 = () => {
   return gulp.src('./app/static/fonts/**/*.ttf')
          .pipe(ttf2woff2())
          .pipe(gulp.dest('./dist/static/fonts/'));
@@ -312,9 +312,9 @@ export const csslib = () => {
   searchCss(nodeModules + process.argv[3].replace('--', ''));
 } 
 
-const fonts = gulp.series( fontTtf2Woff2, fontTtf2Woff, fontsStyle);
+export const fonts = gulp.series(fontTtf2Woff2, fontTtf2Woff, fontsStyle);
  
-export const build = gulp.series(clean, fonts, images, scripts, styles, php, html, svg);
+export const build = gulp.series(clean, fonts, gulp.parallel(images, scripts, styles, php, html, svg));
 
 export const watch = gulp.series(build, () => {
     browserSync.init({
