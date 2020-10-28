@@ -51,10 +51,8 @@ window.addEventListener('load', function() {
         
     });
     
-    
     galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
 
-  
     
 });
 
