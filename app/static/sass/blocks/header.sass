@@ -1,22 +1,24 @@
 .header
     position: relative
     z-index: 3
-    +row-flex
+    display: flex
     align-items: center
     justify-content: space-between
     padding-top: 32px
     height: 70px
-    > *
-        +col
     &__nav
         +xl-block
             margin-left: 0
 
 .logo
     display: flex
+    flex-shrink: 1000
+    align-items: center
+    +sm-block
+        transform: scale(0.8)
     &__text
         margin-left: 25px
-        +sm-block
+        +xs-block
             display: none
     &__title
         margin-bottom: 10px
