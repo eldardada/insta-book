@@ -16,16 +16,22 @@
     align-content: center
     +bp900-block
         grid-template-rows: min-content min-content min-content
+        grid-template-columns: minmax(250px, max-content) 1fr
+    +sm-block
         grid-template-columns: 1fr
 
 .hero-img
-    grid-row: 1/3
+    flex-shrink: 2
+    grid-row: 1/4
     grid-column: 1/2
     +col
     margin-left: 3px
     padding: 0 20px
     +bp900-block
         margin: 0 auto 30px
+        grid-column: 1/2
+        grid-row: 2/3
+    +sm-block
         grid-column: 1/3
         grid-row: 2/3
     &__main-img
@@ -80,46 +86,56 @@
     &__icons
         margin-bottom: 50px
 
+
 .hero-info
+    flex-shrink: 1
     position: relative
     z-index: 3
-    grid-column: 2/3
-    grid-row: 2/3
-    +bp900-block
-        justify-self: center
-        grid-column: 1/2
-        grid-row: 3/4
-        .btn-blue
-            display: block
-            width: max-content
-            margin: 0 auto
-            text-align: center
-
-.hero-icons
-    +row-flex
-    justify-content: space-between
     width: 100%
     max-width: 600px
-    text-align: center
-
+    overflow: auto
     +lg-block
+        max-width: 100%
         justify-content: space-around
+        justify-content: space-evenly
+
+.hero-icons
+    display: flex
+    flex-wrap: wrap  
+    justify-content: space-between
+    text-align: center
     +bp900-block
+        flex-direction: column
         margin: 0 auto 20px
-        
+    +sm-block
+        flex-direction: row
+        width: 500px
+    +xxs-block
     &__icon
+        flex-basis: calc(33.333% - 30px)
         +bp900-block
-            +col
             margin-bottom: 30px
         > img
             display: block
             margin: 0 auto
         > p
-            max-width: 145px
-            font-size: 18px
+            margin: 0 auto
+            max-width: 140px
             margin-top: 30px
             &:first-child
                 max-width: 125px
+
+.hero-btns
+    position: relative
+    z-index: 3
+    grid-row: 3/4
+    grid-column: 2/3
+    +bp900-block
+        grid-row: 4/5
+        grid-column: 1/3
+        justify-self: center
+
+
                 
                 
             
