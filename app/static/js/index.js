@@ -48,6 +48,12 @@ window.addEventListener('load', function() {
         fadeEffect: {
             crossFade: true
         },
+        breakpoints: {
+            901: {
+                loop: false,
+                watchSlidesProgress: false
+            }
+        }
         
     });
     
