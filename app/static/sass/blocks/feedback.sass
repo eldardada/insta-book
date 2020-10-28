@@ -9,12 +9,14 @@
         padding: 30px 0
     &__content
        display: grid
-       grid-template-rows: min-content min-content min-content
-       grid-template-columns: 1fr 1fr
+       grid-template-rows: max-content min-content min-content
+       grid-template-columns: max-content 1fr
        align-content: center
        grid-row-gap: 20px
+       grid-column-gap: 100px
        margin-bottom: 30px
        +bp1250-block
+            grid-column-gap: 0
             grid-template-columns: 1fr
             grid-template-rows: min-content min-content min-content min-content
     &__title
@@ -61,6 +63,7 @@
 .feedback-img
     grid-column: 1/2
     grid-row: 1/4
+    justify-self: start
     .swiper-container
         max-width: 100%
     +bp1250-block
@@ -71,6 +74,7 @@
 .feedback-text
     grid-column: 2/3
     grid-row: 1/2
+    max-width: 700px !important
     &__feedback
         min-height: 160px
         font-size: 18px
@@ -88,8 +92,8 @@
 .feedback-thumbs
     grid-column: 2/3
     grid-row: 2/3
-    width: 100%
     max-width: 700px !important
+    width: 100%
     +bp900-block
         overflow: auto
     +bp1250-block

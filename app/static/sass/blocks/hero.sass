@@ -64,8 +64,6 @@
 .hero-text
     position: relative
     z-index: 3
-    +col
-    margin-left: auto
     grid-column: 2/3
     grid-row: 1/2
     +bp900-block
@@ -74,17 +72,18 @@
         grid-row: 1/2
         text-align: center
         h1
-            text-align: center
             margin: 0 auto 30px
             + p
                 max-width: 100%
-                text-align: center
     > h1
         margin-bottom: 40px
         + p
             margin-bottom: 48px
     &__icons
+        margin-left: -25px
         margin-bottom: 50px
+        +bp900-block
+            margin-left: 0
 
 
 .hero-info
