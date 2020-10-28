@@ -33,7 +33,7 @@ const smartgridSettings = {
             width: "420px"
         },
         xxs: {
-            width: "375px"
+            width: "340px"
         }
     }
 };

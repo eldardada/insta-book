@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
         watchSlidesProgress: true,
         allowTouchMove: false,
         breakpoints: {
-            376: {
+            341: {
                 slidesPerView: 3,
             },
             576: {
