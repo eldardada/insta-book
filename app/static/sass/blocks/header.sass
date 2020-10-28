@@ -5,16 +5,19 @@
     align-items: center
     justify-content: space-between
     padding-top: 32px
-    height: 56px
+    height: 70px
     > *
         +col
     &__nav
-        margin-left: -64px
+        +xl-block
+            margin-left: 0
 
 .logo
     display: flex
     &__text
         margin-left: 25px
+        +sm-block
+            display: none
     &__title
         margin-bottom: 10px
     &__subtitle
@@ -22,11 +25,30 @@
         font-size: 12px
         max-width: 150px
 
+.nav
+    +lg-block
+        display: flex
+        align-items: center
+        position: absolute
+        left: 0
+        right: 0
+        top: calc(100% + 20px)
+        justify-content: center
+
 .navigation
     display: flex
+    +xs-block
+        justify-content: space-around
+        width: 100%
     > li
+        +lg-block
+            margin-bottom: 20px
         &:not(:last-child)
             margin-right: 50px
+            +xs-block
+                font-size: 15px
+                &:not(:last-child)
+                    margin-right: 0
         > a
             transition: color .3s
             &:hover

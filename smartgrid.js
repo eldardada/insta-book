@@ -14,8 +14,14 @@ const smartgridSettings = {
         xl: {
             width: "1200px",
         },
+        bp1250: {
+            width: "1250px",
+        },
         lg: {
-            width: "992px",
+            width: "1060px",
+        },
+        bp900: {
+            width: "900px",
         },
         md: {
             width: "768px",

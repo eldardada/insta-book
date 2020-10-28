@@ -312,7 +312,7 @@ export const csslib = () => {
   searchCss(nodeModules + process.argv[3].replace('--', ''));
 } 
 
-const fonts = gulp.parallel( fontTtf2Woff2, fontTtf2Woff, fontsStyle);
+const fonts = gulp.series( fontTtf2Woff2, fontTtf2Woff, fontsStyle);
  
 export const build = gulp.series(clean, fonts, images, scripts, styles, php, html, svg);
 

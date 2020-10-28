@@ -5,16 +5,25 @@ Swiper.use([Navigation, Thumbs, EffectFade]);
 
 
 const galleryThumbs = new Swiper('.feedback__gallery-thumbs', {
-    allowTouchMove: false,
+    slidesPerView: 3,
     spaceBetween: 20,
-    slidesPerView: 1,
     freeMode: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
+    allowTouchMove: false,
+    breakpoints: {
+        576: {
+            slidesPerView: 5,
+        },
+        901: {
+            slidesPerView: 7,
+            
+        }
+    }
 });
 
 const galleryTop = new Swiper('.feedback__gallery-top', {
-    allowTouchMove: false,
+    slidesPerView: 1,
     loop: true,
     effect: 'fade',
     fadeEffect: {
@@ -30,11 +39,13 @@ const galleryTop = new Swiper('.feedback__gallery-top', {
 });
 
 const feedbackContentSlider = new Swiper('.feedback__gallery-content', {
+    slidesPerView: 1,
     allowTouchMove: false,
     effect: 'fade',
     fadeEffect: {
         crossFade: true
-    }
+    },
+    
 });
 
 
@@ -55,17 +66,19 @@ function thumbsImagesRemoveActive() {
 
 galleryTop.on('slideChange', (e) => {
     let index = e.activeIndex - 1;
+    
     index === 0 ? index = thumbsImages.length : 1;
     index === thumbsImages.length ? index = 0 : 1;
+    
     feedbackContentSlider.forEach(el => {
         el.slideTo(index);
     });
     
     thumbsImagesRemoveActive();
-    console.log(index);
 
     !thumbsImages[index] ? index = 0 : 1;
-    console.log(index);
+
     thumbsImages[index].classList.add('swiper-slide-active');
 });
+
 
