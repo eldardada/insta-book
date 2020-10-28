@@ -6,24 +6,20 @@ window.addEventListener('load', function() {
     // import 'core-js/features/promise';
 
     const galleryThumbs = new Swiper('.feedback__gallery-thumbs', {
-        width: 68,
-        allowTouchMove: true,
         slidesPerView: 1,
+        loop: true,
+        loopedSlides: 7,
+        width: 100,
         spaceBetween: 20,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
         freeMode: true,
-        breakpoints: {
-            901: {
-                watchSlidesVisibility: false,
-                watchSlidesProgress: false,
-                allowTouchMove: false 
-            }
-        }
+        allowTouchMove: false,
+        watchSlidesProgress: true
     });
     
     const galleryTop = new Swiper('.feedback__gallery-top', {
         slidesPerView: 1,
+        loop: true,
+        loopedSlides: 7,
         effect: 'fade',
         fadeEffect: {
             crossFade: true
@@ -39,6 +35,8 @@ window.addEventListener('load', function() {
     
     const feedbackContentSlider = new Swiper('.feedback__gallery-content', {
         slidesPerView: 1,
+        loop: true,
+        loopedSlides: 7,
         allowTouchMove: false,
         effect: 'fade',
         fadeEffect: {

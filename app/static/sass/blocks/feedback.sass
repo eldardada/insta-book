@@ -3,6 +3,7 @@
     flex-direction: column
     justify-content: center
     padding: 60px 0
+    
     &__content
        display: grid
        grid-template-rows: 280px 1fr
@@ -92,36 +93,31 @@
     grid-column: 2/3
     grid-row: 2/3
     width: 100%
-    max-width: 700px
     overflow: auto
-    display: flex
-    justify-content: center
-    .gallery-thumbs
-        padding: 20px 10px
     +bp1250-block
-        max-width: 100%
         justify-self: center
         grid-row: 2/3
         grid-column: 1/2
-  
-.feedback__gallery-thumbs
-    .swiper-slide
-        cursor: pointer
-        border-radius: 80px
-        width: 80px !important
-        height: 80px
-        background-size: cover
-        background-position: top
-    .swiper-slide-thumb-active
-        position: relative
-        &::after
-            content: ''
-            display: block
-            position: absolute
-            top: -10px
-            left: -10px
-            right: -10px
-            bottom: -10px
-            background-color: transparent
-            border: 1px solid var(--color-blue)
+    .swiper-container
+        padding: 20px
+        width: 740px
+        .swiper-slide
+            width: 80px !important
+            height: 80px
+            cursor: pointer
             border-radius: 100%
+            background-size: cover
+            background-position: top
+        .swiper-slide-thumb-active
+            position: relative
+            &::after
+                content: ''
+                display: block
+                position: absolute
+                top: -10px
+                left: -10px
+                right: -10px
+                bottom: -10px
+                background-color: transparent
+                border: 1px solid var(--color-blue)
+                border-radius: 100%
