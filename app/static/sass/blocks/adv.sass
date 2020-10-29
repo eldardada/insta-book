@@ -1,21 +1,22 @@
 .adv
-    padding: 50px 0
     position: relative
     z-index: 3
+    padding: 50px 0
     &__title
         margin-bottom: 50px
     &__content
         display: grid
-        align-items: center
-        grid-template-rows: min-content
         grid-template-columns: 1fr 541px 1fr
+        grid-column-gap: 15px
         +bp1250-block
             grid-template-columns: 5fr 3fr 3fr
         +bp900-block
-            grid-template-rows: min-content min-content
+            grid-row-gap: 30px
+            grid-template-rows: max-content max-content
             grid-template-columns: 1fr 1fr
 
 .adv-img
+    align-self: center
     text-align: center
     &__img
         margin-bottom: 35px
@@ -31,27 +32,25 @@
             margin: 0 auto 30px
 
 .adv-icons
+    display: grid
+    grid-gap: 30px
     +bp1250-block
         text-align: center
-    +bp900-block
-        margin-bottom: 30px
     +xs-block
         font-size: 15px
     &__block
         position: relative
+        +sm-block
+            min-height: 220px
         &:hover .adv-icon
             border: 5px solid var(--color-blue)
             background-color: var(--color-black)
-        +bp1250-block
-            +col
         > p
             line-height: 24px
             max-width: 260px
             +bp1250-block
                 margin-top: 15px
                 max-width: 100%
-        &:not(:last-child)
-            margin-bottom: 80px
         &:last-child
             .adv-icons__line
                 top: 0px
@@ -59,7 +58,6 @@
         margin-bottom: 20px
         +bp1250-block
             margin: 0 auto
-
     &--2
         margin-left: auto
         text-align: right
@@ -71,20 +69,16 @@
         +bp1250-block
             display: none
 
-.adv-icons.adv-icons--1
-    .adv-icons__line
-        right: 30px
+.adv-icons.adv-icons--1 .adv-icons__line
+    right: 30px
 
-.adv-icons.adv-icons--2
-    .adv-icons__line
-        left: -80px
+.adv-icons.adv-icons--2 .adv-icons__line
+    left: -80px
         
 .adv-icon
     position: relative
-    display: flex
     border-radius: 6px
-    justify-content: center
-    align-items: center
+    line-height: 66px
     width: 61px
     height: 61px
     background-color: var(--color-icon-bg)
@@ -92,15 +86,12 @@
     box-sizing: border-box
     border: 5px solid transparent
     transition: border .3s, background-color .3s
-    img
-        z-index: 3
     &::after
         content: ''
-        z-index: 1
-        top: 5px
-        left: 5px
-        bottom: 5px
-        right: 5px
-        border-radius: 5px
         position: absolute
+        top: 2px
+        left: 2px
+        bottom: 2px
+        right: 2px
+        border-radius: 5px
         background-color: rgba(0, 150, 255, 0.1)
