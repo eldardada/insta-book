@@ -1,9 +1,10 @@
 .main-hero
     display: grid
-    grid-template-rows: 80px 1fr 
+    grid-template-rows: 80px 1fr
     height: 100vh
     min-height: 800px
     +bp900-block
+        grid-row-gap: 100px
         height: initial
     
 .hero
@@ -49,15 +50,6 @@
             color: var(--color-blue)
     > div
         position: relative
-    &__effects-img
-        z-index: 1
-        position: absolute
-        min-width: 898px
-        height: 890px
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-
 
 .hero-text
     position: relative
