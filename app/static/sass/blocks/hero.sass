@@ -11,9 +11,9 @@
     position: relative
     display: grid
     align-items: center
-    grid-template-columns: 4fr 6fr
-    grid-template-rows: min-content min-content
-    align-content: center
+    grid-template-columns: max-content minmax(min-content, 700px)
+    grid-template-rows: min-content min-content min-content
+    justify-content: space-around
     +bp900-block
         grid-template-rows: min-content min-content min-content
         grid-template-columns: minmax(250px, max-content) 1fr
@@ -21,7 +21,6 @@
         grid-template-columns: 1fr
 
 .hero-img
-    flex-shrink: 2
     grid-row: 1/4
     grid-column: 1/2
     +col
@@ -87,20 +86,14 @@
 
 
 .hero-info
-    flex-shrink: 1
     position: relative
     z-index: 3
     width: 100%
     max-width: 600px
     overflow: auto
-    +lg-block
-        max-width: 100%
-        justify-content: space-around
-        justify-content: space-evenly
 
 .hero-icons
     display: flex
-    flex-wrap: wrap  
     justify-content: space-between
     text-align: center
     +bp900-block
@@ -109,7 +102,6 @@
     +sm-block
         flex-direction: row
         width: 500px
-    +xxs-block
     &__icon
         flex-basis: calc(33.333% - 30px)
         +bp900-block
@@ -121,6 +113,7 @@
             margin: 0 auto
             max-width: 140px
             margin-top: 30px
+            line-height: 26px
             &:first-child
                 max-width: 125px
 

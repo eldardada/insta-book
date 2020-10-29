@@ -38,25 +38,27 @@ body
         background-color: var(--color-blue)
 
 .btn-blue
-        display: inline-block
-        background-color: var(--color-blue)
-        color: var(--color-white)
-        border: 1px solid transparent
-        padding: 17px 69px
-        font-size: 18px
-        border-radius: 4px
-        transition: background-color .3s, border .3s
-        &:hover
-            border: 1px solid var(--color-blue)
-            background-color: transparent
+    display: inline-block
+    background-color: var(--color-blue)
+    color: var(--color-white)
+    border: 1px solid transparent
+    padding: 17px 69px
+    font-size: 18px
+    border-radius: 4px
+    transition: background-color .3s, border .3s
+    &:hover
+        border: 1px solid var(--color-blue)
+        background-color: transparent
 h1
     max-width: 710px
     font-size: 65px
     +font(65, 26)
+    line-height: normal
     > span
         color: var(--color-blue)
     + p
         +font(36, 20)
+        line-height: 48px
         max-width: 500px
 
 h2
