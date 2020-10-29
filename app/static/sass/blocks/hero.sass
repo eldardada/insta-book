@@ -1,4 +1,4 @@
-.main-hero
+.hero
     display: grid
     grid-template-rows: 80px 1fr
     height: 100vh
@@ -6,20 +6,18 @@
     +bp900-block
         grid-row-gap: 100px
         height: initial
-    
-.hero
-    display: grid
-    align-items: center
-    align-self: center
-    grid-template-columns: max-content minmax(min-content, 700px)
-    grid-template-rows: min-content min-content min-content
-    justify-content: space-between
-    +bp900-block
+    &__content
+        display: grid
+        align-items: center
+        align-self: center
+        grid-template-columns: max-content minmax(min-content, 700px)
         grid-template-rows: min-content min-content min-content
-        grid-template-columns: minmax(min-content, 3fr) 2fr
-    +sm-block
-        grid-template-columns: 1fr
-
+        justify-content: space-between
+        +bp900-block
+            grid-template-rows: min-content min-content min-content
+            grid-template-columns: minmax(min-content, 3fr) 2fr
+        +sm-block
+            grid-template-columns: 1fr
 .hero-img
     grid-row: 1/4
     grid-column: 1/2
@@ -74,7 +72,6 @@
         margin-bottom: 50px
         +bp1250-block
             margin-left: 0
-
 
 .hero-info
     position: relative

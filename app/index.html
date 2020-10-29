@@ -15,7 +15,7 @@
 <body>
     <main id="main" class="main">
         <div class="container main__container">
-            <section class="main-hero">
+            <section class="hero">
                 <header class="header main__header">
                     <div class="logo header__logo">
                         <picture>
@@ -37,13 +37,18 @@
                     </nav>
                     <a href="#" class="main-btn">Заказать звонок</a>
                 </header>
-                <div class="hero main__hero">
+                <div class="hero__content">
                     <div class="hero-img">
                         <div>
                             <picture>
                                 <source srcset="./static/img/hero-img.webp 1x"
+                                        media="(min-width: 600px)"
                                         type="image/webp">
-                                <img class="hero-img__main-img" src="./static/img/hero-img.png" alt="Книга Анатолия Милова">
+                                <source srcset="./static/img/hero-img.png 1x"
+                                        media="(min-width: 600px)">
+                                <source srcset="./static/img/hero-img-sm.webp 1x"
+                                        type="image/webp">
+                                <img class="hero-img__main-img" src="./static/img/hero-img-sm.png" alt="Книга Анатолия Милова">
                             </picture>
                             <div class="main__bg bg">
                                 <div class="bg-circle bg-circle--1"></div>
@@ -220,17 +225,17 @@
                                     <span class="feedback-text__author">Ангелина Авдиянц</span>
                                 </div>
                                 <div class="swiper-slide">
-                                    <time datetime="2020-02-07 00:35" class="feedback-text__date swiper-slide">7 фев 2020 в 0:35</time>
+                                    <time datetime="2020-02-07 00:35" class="feedback-text__date">7 фев 2020 в 0:35</time>
                                     <div class="feedback-text__feedback">Привет народ) не так давно прочитал книгу Анатолия «Прибыльный бизнес в Инстаграм», ну как книгу, это больше похоже на практическое руководство, никакой воды, целевые действия в сухом виде, рекомендую почитать тем кто не знает с чего начать и куда двигаться для заработка в Сети. Отличный материал, читается легко, советую)</div>
                                     <span class="feedback-text__author">Денис Зохан</span>
                                 </div>
                                 <div class="swiper-slide">
-                                    <time datetime="2020-01-20 17:59" class="feedback-text__date swiper-slide">20 янв 2020 в 17:59</time>
+                                    <time datetime="2020-01-20 17:59" class="feedback-text__date">20 янв 2020 в 17:59</time>
                                     <div class="feedback-text__feedback">Большое спасибо Анатолию за книгу! Очень жалею, что не прочитал её раньше - сэкономило бы мне много времени! Читается очень легко и не принужденно. В книге детально разобраны способы продвижения в инстаграмме, опираясь на особенности работы самого инстаграмма и психологию людей. Так-же очень полезна была информация по тому, как нужно правильно продавать услуги продвижения.</div>
                                     <span class="feedback-text__author">Артём Сенюков</span>
                                 </div>
                                 <div class="swiper-slide">
-                                    <time datetime="2019-10-28 17:53" class="feedback-text__date swiper-slide">28 окт 2019 в 17:53</time>
+                                    <time datetime="2019-10-28 17:53" class="feedback-text__date">28 окт 2019 в 17:53</time>
                                     <div class="feedback-text__feedback">Добрый вечер, почитал книгу Анатолия, и я понял, что раньше информация, которой я владел была очень устаревшей и не рентабельной, те инструменты и советы, которые Вы найдёте в этой книги, реально Вам помогут получать доход или же сдвинуться с мёртвый точки. Всем советую эту книгу и желательно прочитать ее минимум раза 2, с промежутком в 1 месяц, уверен Вы откроете много нового для себя, но уже с другой стороны) всем успехов и хороших продаж!)</div>
                                     <span class="feedback-text__author">Данил Колчанов</span>
                                 </div>
