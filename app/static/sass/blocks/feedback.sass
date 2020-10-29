@@ -13,11 +13,11 @@
        grid-template-columns: max-content max-content
        align-content: center
        justify-content: space-between
-       grid-row-gap: 20px
+       grid-row-gap: 30px
        margin-bottom: 30px
        +bp1250-block
             grid-template-columns: 1fr
-            grid-template-rows: repeat(auto-fill, minmax(min-cintent, 1fr))
+            grid-template-rows: repeat(auto-fill, minmax(min-content, 1fr))
     &__title
         margin-bottom: 60px
     &__link
@@ -73,6 +73,10 @@
 .feedback-text
     grid-column: 2/3
     grid-row: 1/2
+    max-height: max-content
+    .swiper-slide
+        &:not(.swiper-slide-active)
+            display: none
     +bp1250-block
         justify-self: center
     +md-block
@@ -81,6 +85,8 @@
         margin-bottom: 30px
         line-height: 30px
         font-size: 18px
+        min-height: 180px
+
     &__date
         display: block
         font-size: 24px
@@ -90,7 +96,7 @@
         font-weight: 700
     +bp1250-block
         grid-column: 1/3
-        grid-row: 4/5
+        grid-row: 3/4
 
 .feedback-thumbs
     grid-column: 2/3
