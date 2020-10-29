@@ -5,7 +5,12 @@ Swiper.use([Navigation, Thumbs, EffectFade]);
 window.addEventListener('load', function() {
     // import 'core-js/features/promise';
 
-    const galleryThumbs = new Swiper('.feedback__gallery-thumbs', {
+    const feedbackContentSliderSettings = {
+        
+    }
+
+
+    let galleryThumbs = new Swiper('.feedback__gallery-thumbs', {
         slidesPerView: 1,
         loop: true,
         loopedSlides: 7,
@@ -22,7 +27,7 @@ window.addEventListener('load', function() {
         }
     });
     
-    const galleryTop = new Swiper('.feedback__gallery-top', {
+    let galleryTop = new Swiper('.feedback__gallery-top', {
         slidesPerView: 1,
         loop: true,
         loopedSlides: 7,
@@ -38,8 +43,7 @@ window.addEventListener('load', function() {
           swiper: galleryThumbs
         }
     });
-    
-    const feedbackContentSlider = new Swiper('.feedback__gallery-content', {
+    let feedbackContentSlider = new Swiper('.feedback__gallery-content', {
         slidesPerView: 1,
         loop: true,
         loopedSlides: 7,
@@ -54,11 +58,12 @@ window.addEventListener('load', function() {
                 watchSlidesProgress: false
             }
         }
-        
     });
     
+
     galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
 
+  
     
 });
 
