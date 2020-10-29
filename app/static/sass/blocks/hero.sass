@@ -1,6 +1,5 @@
 .main-hero
     display: grid
-    grid-gap: 100px 
     grid-template-rows: 80px 1fr 
     height: 100vh
     min-height: 800px
@@ -8,13 +7,12 @@
         height: initial
     
 .hero
-    position: relative
     display: grid
     align-items: center
     align-self: center
     grid-template-columns: max-content minmax(min-content, 700px)
     grid-template-rows: min-content min-content min-content
-    justify-content: space-around
+    justify-content: space-between
     +bp900-block
         grid-template-rows: min-content min-content min-content
         grid-template-columns: minmax(min-content, 3fr) 2fr

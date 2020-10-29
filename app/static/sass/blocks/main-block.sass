@@ -40,16 +40,22 @@
             left: -950px
             width: 2300px
             height: 2300px
+    .glow
+        position: absolute
+        border-radius: 100px
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        box-shadow: 0px 0px 100px 200px rgba(#00b4ff, 0.4)
+        width: 100px
+        height: 100px
 
 @keyframes pulse 
     0%
-        background-color: rgba(0,127,255, 0.4)
         box-shadow: 0 0 0 0 rgba(0,127,255, 0.4)
     50%
-        background-color: rgba(0,127,255, 0)
         box-shadow: 0 0 0 180px rgba(0,127,255, 0)
     100%
-        background-color: rgba(0,127,255, 0)
         box-shadow: 0 0 0 0 rgba(0,195,127, 0)
 
 
