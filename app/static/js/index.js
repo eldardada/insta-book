@@ -3,34 +3,33 @@ import Swiper, {Navigation, Thumbs, EffectFade} from 'swiper';
 Swiper.use([Navigation, Thumbs, EffectFade]);
 
 window.addEventListener('load', function() {
-    // import 'core-js/features/promise';
 
-    const feedbackContentSliderSettings = {
-        
-    }
-
-
-    let galleryThumbs = new Swiper('.feedback__gallery-thumbs', {
+    const feedbackContentSlider = new Swiper('.feedback__gallery-content', {
         slidesPerView: 1,
         loop: true,
-        loopedSlides: 7,
-        width: 100,
-        spaceBetween: 20,
         freeMode: true,
+        loopedSlides: 7,
         allowTouchMove: false,
-        watchSlidesProgress: true,
-        breakpoints: {
-            901: {
-                loop: false,
-                watchSlidesProgress: false
-            }
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
         }
     });
-    
-    let galleryTop = new Swiper('.feedback__gallery-top', {
+
+    const galleryThumbs = new Swiper('.feedback__gallery-thumbs',  {
         slidesPerView: 1,
         loop: true,
         loopedSlides: 7,
+        width: 120,
+        spaceBetween: 20,
+        allowTouchMove: false,
+        watchSlidesProgress: true,
+    });
+
+    const galleryTop = new Swiper('.feedback__gallery-top',{
+        slidesPerView: 1,
+        loop: true,
+        loopedSlides: 10,
         effect: 'fade',
         fadeEffect: {
             crossFade: true
@@ -43,27 +42,11 @@ window.addEventListener('load', function() {
           swiper: galleryThumbs
         }
     });
-    let feedbackContentSlider = new Swiper('.feedback__gallery-content', {
-        slidesPerView: 1,
-        loop: true,
-        loopedSlides: 7,
-        allowTouchMove: false,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
-        breakpoints: {
-            901: {
-                loop: false,
-                watchSlidesProgress: false
-            }
-        }
-    });
-    
+
 
     galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
 
-  
+   
     
 });
 

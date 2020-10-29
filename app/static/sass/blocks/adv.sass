@@ -39,6 +39,9 @@
         font-size: 15px
     &__block
         position: relative
+        &:hover .adv-icon
+            border: 5px solid var(--color-blue)
+            background-color: var(--color-black)
         +bp1250-block
             +col
         > p
@@ -76,6 +79,7 @@
         left: -80px
         
 .adv-icon
+    position: relative
     display: flex
     border-radius: 6px
     justify-content: center
@@ -84,3 +88,18 @@
     height: 61px
     background-color: var(--color-icon-bg)
     text-align: center
+    box-sizing: border-box
+    border: 5px solid transparent
+    transition: border .3s, background-color .3s
+    img
+        z-index: 3
+    &::after
+        content: ''
+        z-index: 1
+        top: 5px
+        left: 5px
+        bottom: 5px
+        right: 5px
+        border-radius: 5px
+        position: absolute
+        background-color: rgba(0, 150, 255, 0.1)
