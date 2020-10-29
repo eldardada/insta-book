@@ -155,7 +155,7 @@ const images = () => {
              ])
            ))
  
-           .pipe(gulpif(isProd, tingpng(tiny) ))
+          //  .pipe(gulpif(isProd, tingpng(tiny) ))
  
            .pipe(gulp.dest(config.dist.img))
            .pipe(browserSync.stream())
