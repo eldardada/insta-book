@@ -48,9 +48,14 @@ body
     font-size: 18px
     border-radius: 4px
     transition: background-color .3s, border .3s
+    cursor: pointer
+    &:focus
+        outline: none
     &:hover
         border: 1px solid var(--color-blue)
         background-color: transparent
+    &:active
+        background-color: rgba(#fff, 0.1)
 h1
     max-width: 710px
     font-size: 65px

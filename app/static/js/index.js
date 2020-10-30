@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
         spaceBetween: 20,
         watchSlidesProgress: true,
         breakpoints: {
-            350: {
+            340: {
                 slidesPerView: 3,
             },
             500: {
