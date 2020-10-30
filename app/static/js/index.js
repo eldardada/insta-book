@@ -12,10 +12,13 @@ window.addEventListener('load', function() {
         }
     });
 
-    const galleryThumbs = new Swiper('.feedback-thumbs .swiper-container',  {
+    const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
+
+    const galleryThumbsSlider = new Swiper(galleryThumbs,  {
         slidesPerView: 2,
+        watchOverflow: true,
         spaceBetween: 20,
-        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
         breakpoints: {
             340: {
                 slidesPerView: 3,
@@ -38,11 +41,11 @@ window.addEventListener('load', function() {
             1200: {
                 slidesPerView: 7,
             }
-        }
+        },
+        
     });
 
     const galleryTop = new Swiper('.feedback-img .swiper-container',{
-        
         slidesPerView: 1,
         slidesPerGroup: 1,
         effect: 'fade',
@@ -51,22 +54,24 @@ window.addEventListener('load', function() {
         },
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          prevEl: '.swiper-button-prev',
         },
         thumbs: {
-          swiper: galleryThumbs
+          swiper: galleryThumbsSlider,
         },
     });
 
-
-    galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
-
     const modals = document.querySelectorAll('.modal');
     const body = document.querySelector('body');
-    function showModal(modalSelector) {
-        const modal = document.querySelector(modalSelector);
+    
+    function showModal(modal) {
         modal.classList.add('md-show');
         body.style.overflow = 'hidden';
+    }
+
+    function hideModal(modal) {
+        modal.classList.remove('md-show');
+        body.style.overflow = '';
     }
 
     document.addEventListener('click', e => {
@@ -74,7 +79,8 @@ window.addEventListener('load', function() {
 
         if(target.hasAttribute('data-modal')) {
             const modalSelector = target.dataset.modal;
-            showModal(modalSelector);
+            const modal = document.querySelector(modalSelector);
+            showModal(modal);
         }
     });
 
@@ -107,9 +113,36 @@ window.addEventListener('load', function() {
                 body.style.overflow = '';
             }
         });
+    });
 
-    })
-    
+    const overlay = document.querySelector('.md-overlay');
+
+    overlay.addEventListener('click', () => {
+        modals.forEach(modal => {
+            if(modal.classList.contains('md-show')) {
+                hideModal(modal);
+            }
+        });
+    });
+
+    galleryThumbsSlider.on('click', function(el) {
+        const slides = galleryThumbs.querySelectorAll('.swiper-slide');
+        let firstSlideVisible = 0;
+
+        for (let i = 0; i < slides.length; i++) {
+            if(slides[i].classList.contains('swiper-slide-visible')) {
+                firstSlideVisible = i;
+                break;
+            }
+        }
+
+        if(el.clickedIndex !== firstSlideVisible) {
+            galleryThumbsSlider.slideNext();
+        }
+        else {
+            galleryThumbsSlider.slidePrev();
+        }
+    });
 });
 
 
