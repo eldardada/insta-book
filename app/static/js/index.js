@@ -4,40 +4,47 @@ Swiper.use([Navigation, Thumbs, EffectFade]);
 
 window.addEventListener('load', function() {
 
-    const feedbackContentSlider = new Swiper('.feedback__gallery-content', {
-        loop: true,
-        freeMode: true,
-        loopedSlides: 7,
-        allowTouchMove: false,
+    const feedbackContentSlider = new Swiper('.feedback-text .swiper-container', {
+        slidesPerView: 1,
         effect: 'fade',
+        fadeEffect: {
+            crossFade: 'cascade'
+        }
     });
 
-    const galleryThumbs = new Swiper('.feedback__gallery-thumbs',  {
-        slidesPerView: 3,
+    const galleryThumbs = new Swiper('.feedback-thumbs .swiper-container',  {
+        slidesPerView: 2,
         spaceBetween: 20,
         watchSlidesProgress: true,
         breakpoints: {
-            650: {
-                slidesPerView: 6,
-            }, 
-            550: {
-                slidesPerView: 5,
-            }, 
-            450: {
+            350: {
+                slidesPerView: 3,
+            },
+            500: {
                 slidesPerView: 4,
             },
-            901: {
+            625: {
+                slidesPerView: 5,
+            },
+            900: {
+                slidesPerView: 4,
+            }, 
+            980: {
+                slidesPerView: 5,
+            },
+            1140: {
+                slidesPerView: 6,
+            },
+            1200: {
                 slidesPerView: 7,
             }
         }
     });
 
-    const galleryTop = new Swiper('.feedback__gallery-top',{
+    const galleryTop = new Swiper('.feedback-img .swiper-container',{
         
         slidesPerView: 1,
         slidesPerGroup: 1,
-        loop: true,
-        
         effect: 'fade',
         fadeEffect: {
             crossFade: true
@@ -101,7 +108,8 @@ window.addEventListener('load', function() {
             }
         });
 
-    });
+    })
     
 });
+
 

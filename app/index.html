@@ -64,7 +64,7 @@
                         <p>С помощью книги, которую я даю бесплатно</p>
                     </div>
                     <div class="hero-info">
-                        <div class="hero-icons hero-text__icons">
+                        <!-- <div class="hero-icons hero-text__icons">
                             <div class="hero-icons__icon">
                                 <picture>
                                     <source srcset="./static/img/hero-icon-1.webp 1x"
@@ -87,6 +87,32 @@
                                             type="image/webp">
                                         <img src="./static/img/hero-icon-3.png" alt="Деньги">
                                 </picture>
+                                <p>Внедряй и зарабатывай</p>
+                            </div>
+                        </div> -->
+                        <div class="hero-icons hero-text__icons">
+                            <div class="hero-icons__icon">
+                                <svg class="hero-icons__image">
+                                    <use xlink:href="./static/img/svg/sprite.svg#pin"></use>
+                                </svg>
+                                <p>Оставь заявку и укажи адрес</p>
+                            </div>
+                            <div class="hero-icons__icon">
+                                <svg class="hero-icons__image">
+                                    <use xlink:href="./static/img/svg/sprite.svg#parcel"></use>
+                                </svg>
+                                <p>Забери книгу и оплати доставку</p>
+                            </div> 
+                            <div class="hero-icons__icon learn">
+                                <svg class="hero-icons__image">
+                                    <use xlink:href="./static/img/svg/sprite.svg#reading-book"></use>
+                                </svg>
+                                <p>Впитывай мои знания и опыт</p>
+                            </div>
+                            <div class="hero-icons__icon">
+                                <svg class="hero-icons__image">
+                                    <use xlink:href="./static/img/svg/sprite.svg#money-bag-with-dollar-symbol"></use>
+                                </svg>
                                 <p>Внедряй и зарабатывай</p>
                             </div>
                         </div>
@@ -161,59 +187,62 @@
                 <h2 id="feedback" class="feedback__title">Отзывы после прочтения книги</h2>
                 <div class="feedback__content">
                     <div class="feedback-img">
-                        <div class="swiper-container gallery-top feedback__gallery-top">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-1.jpg"
-                                                media="(min-width: 600px)">
-                                        <img src="./static/img/feedback-people-1-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
-                                </div>
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-2.jpg"
-                                                media="(min-width: 600px)">
-                                        <img src="./static/img/feedback-people-2-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
-                                </div>
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-3.jpg"
-                                                media="(min-width: 600px)">
-                                        <img src="./static/img/feedback-people-3-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
-                                </div>
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-4.jpg"
-                                                media="(min-width: 600px)">
-                                            <img src="./static/img/feedback-people-4-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
-                                </div>
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-5.jpg"
-                                                media="(min-width: 600px)">
-                                            <img src="./static/img/feedback-people-5-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
-                                </div>
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-6.jpg"
-                                                media="(min-width: 600px)">
-                                            <img src="./static/img/feedback-people-6-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
-                                </div>
-                                <div class="swiper-slide">
-                                    <picture>
-                                        <source srcset="./static/img/feedback-people-7.jpg"
-                                                media="(min-width: 600px)">
-                                            <img src="./static/img/feedback-people-7-md.jpg" alt="Счастливый обдалатель книги">
-                                    </picture>
+                        <div class="feedback-slider">
+                            <div class="swiper-container feedback__gallery-top">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-1.jpg"
+                                                    media="(min-width: 600px)">
+                                            <img src="./static/img/feedback-people-1-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-2.jpg"
+                                                    media="(min-width: 600px)">
+                                            <img src="./static/img/feedback-people-2-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-3.jpg"
+                                                    media="(min-width: 600px)">
+                                            <img src="./static/img/feedback-people-3-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-4.jpg"
+                                                    media="(min-width: 600px)">
+                                                <img src="./static/img/feedback-people-4-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-5.jpg"
+                                                    media="(min-width: 600px)">
+                                                <img src="./static/img/feedback-people-5-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-6.jpg"
+                                                    media="(min-width: 600px)">
+                                                <img src="./static/img/feedback-people-6-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-7.jpg"
+                                                    media="(min-width: 600px)">
+                                                <img src="./static/img/feedback-people-7-md.jpg" alt="Счастливый обдалатель книги">
+                                        </picture>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="swiper-btns">
                             <div class="swiper-button-prev">
                                 <svg class="swiper-arrow">
@@ -229,7 +258,7 @@
                         <a class="feedback__link" href="https://vk.com/topic-84148205_39926451" target="_blank">Смотреть все отзывы</a>
                     </div>
                     <div class="feedback-text">
-                        <div class="swiper-container feedback__gallery-content">
+                        <div class="swiper-container">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <time datetime="2020-09-17 19:40" class="feedback-text__date">17 сен 2020 в 19:40</time>
@@ -270,7 +299,7 @@
                         </div>
                     </div> 
                     <div class="feedback-thumbs">
-                        <div class="swiper-container gallery-thumbs feedback__gallery-thumbs">
+                        <div class="swiper-container gallery-thumbs">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" >
                                     <div>
@@ -315,6 +344,8 @@
                     </div>
                 </div>
             </section>
+
+           
         </div>
     </main>
 

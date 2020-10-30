@@ -13,6 +13,7 @@
         grid-template-columns: max-content minmax(min-content, 700px)
         grid-template-rows: min-content min-content min-content
         justify-content: space-between
+        grid-row-gap: 30px
         +bp900-block
             grid-template-rows: min-content min-content min-content
             grid-template-columns: minmax(min-content, 3fr) 2fr
@@ -21,7 +22,6 @@
 .hero-img
     grid-row: 1/4
     grid-column: 1/2
-    +col
     margin-left: 3px
     padding: 0 20px
     +bp900-block
@@ -63,10 +63,6 @@
             margin: 0 auto 30px
             + p
                 max-width: 100%
-    > h1
-        margin-bottom: 40px
-        + p
-            margin-bottom: 48px
     &__icons
         margin-left: -25px
         margin-bottom: 50px
@@ -81,30 +77,46 @@
 
 .hero-icons
     display: flex
-    flex-wrap: wrap
-    justify-content: space-around
+    justify-content: space-between
     text-align: center
     +bp900-block
         flex-direction: column
         margin: 0 auto
     +sm-block
         flex-direction: row
+        margin-bottom: 30px
+    @media screen and ( max-width: 350px)
+        flex-wrap: wrap
+        margin-bottom: 0      
     &__icon
-        +font(16, 12)
-        +bp900-block
-            flex-grow: 1
+        flex-basis: 30%
+        @media screen and ( max-width: 350px)
+            flex-basis: 47%
             margin-bottom: 30px
-        +xxs-block
+        +xs-block
             flex-basis: 50%
+        @media screen and ( max-width:  1020px)
+            &.learn
+                display: none
+                @media screen and ( max-width: 350px)
+                    display: block
         > img
             display: block
             margin: 0 auto
         > p
+            +font(16, 12)
             margin: 30px auto 0
             max-width: 140px
             line-height: 26px
             &:first-child
                 max-width: 125px
+    &__image
+        width: 80px
+        height: 70px
+        &:nth-child(1)
+            fill: rgba(#00bfff, 0.7)
+
+            
 
 .hero-btns
     position: relative
