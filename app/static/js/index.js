@@ -64,6 +64,17 @@ window.addEventListener('load', function() {
     const modals = document.querySelectorAll('.modal');
     const body = document.querySelector('body');
     
+    const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
+
+    inputsPhone.forEach(input => {
+        input.addEventListener('change', () => {
+            console.log(input.value.math(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/, ''));
+
+
+        })
+    });
+
+
     function showModal(modal) {
         modal.classList.add('md-show');
         body.style.overflow = 'hidden';

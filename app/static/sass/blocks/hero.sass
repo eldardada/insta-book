@@ -87,12 +87,17 @@
         margin-bottom: 30px
     @media screen and ( max-width: 350px)
         flex-wrap: wrap
-        margin-bottom: 0      
+        margin-bottom: -30px      
     &__icon
         flex-basis: 30%
+        +bp900-block
+            margin-bottom: 30px
+        +sm-block
+            margin-bottom: 0
+        @media screen and ( max-width: 350px)
+            margin-bottom: 30px
         @media screen and ( max-width: 350px)
             flex-basis: 47%
-            margin-bottom: 30px
         +xs-block
             flex-basis: 50%
         @media screen and ( max-width:  1020px)
