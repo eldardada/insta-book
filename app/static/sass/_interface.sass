@@ -31,6 +31,8 @@ body
     border-radius: 4px
     background: transparent
     transition: background-color .3s, border .3s
+    cursor: pointer
+    color: var(--color-white)
     +sm-block
         padding: 10px 20px
     &:hover
@@ -65,11 +67,3 @@ h2
     +font(60, 26)
     text-align: center
 
-.overlay
-    position: fixed
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: rgba(0, 0, 0, 0.7)
-    z-index: 9

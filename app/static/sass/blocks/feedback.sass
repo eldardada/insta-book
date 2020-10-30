@@ -111,15 +111,15 @@
         justify-self: center
     .swiper-container
         padding: 20px
-        width: 670px !important
-        .swiper-slide
-            width: 80px
-            height: 80px
+        .swiper-slide img
+            display: block
+            width: 80px !important
+            height: 80px !important
             cursor: pointer
             border-radius: 100%
-            background-size: cover
-            background-position: top
-        .swiper-slide-thumb-active
+        .swiper-slide-thumb-active > div
+            height: 80px
+            width: 80px
             position: relative
             &::after
                 content: ''

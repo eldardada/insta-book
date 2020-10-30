@@ -34,7 +34,7 @@
                             <li><a href="#feedback">Отзывы</a></li>
                         </ul>
                     </nav>
-                    <a href="#" class="main-btn">Заказать звонок</a>
+                    <button href="#" class="main-btn" data-modal=".modal">Заказать звонок</button>
                 </header>
                 <div class="hero__content">
                     <div class="hero-img">
@@ -272,18 +272,46 @@
                     <div class="feedback-thumbs">
                         <div class="swiper-container gallery-thumbs feedback__gallery-thumbs">
                             <div class="swiper-wrapper">
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-1-sm.jpg)"></div>
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-2-sm.jpg)"></div>
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-3-sm.jpg)"></div>
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-4-sm.jpg)"></div>
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-5-sm.jpg)"></div>
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-6-sm.jpg)"></div>
-                              <div class="swiper-slide" style="background-image: url(./static/img/feedback-people-7-sm.jpg)"></div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-1-sm.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-2-sm.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-3-sm.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-4-sm.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-5-sm.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-6-sm.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" >
+                                    <div>
+                                        <img src="./static/img/feedback-people-7-sm.jpg" alt="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="feedback-btns">
-                        <a href="#" class="btn-blue feedback__btn">Получить книгу</a>
+                        <button data-modal=".modal" class="btn-blue feedback__btn">Получить книгу</button>
                     </div>
                 </div>
             </section>
@@ -310,17 +338,24 @@
         </div>
     </footer>
 
-    <div class="overlay"></div>
 
-    <div class="modal">
-        <h4 class="modal__title">Получить книгу</h4>
-        <form class="form modal-form">
-            <input class="input modal-form__name" type="text" name="name" placeholder="ФИО">
-            <input  class="input modal-form__vk" type="text" name="vk" placeholder="Ссылка вконтакте">
-            <textarea class="input modal-form__address" name="address" placeholder="Адрес доставки"></textarea>
-            <button type="submit" class="modal__btn main-btn">Получить книгу</button>
-        </form>
+    <div class="modal md-effect-8 md-modal">
+        <div class="modal-content md-content ">
+            <h4 class="modal__title">Получить книгу</h4>
+            <form class="form modal-form">
+                <input class="input modal-form__name" type="text" name="name" placeholder="ФИО">
+                <input  class="input modal-form__vk" type="text" name="vk" placeholder="Ссылка вконтакте">
+                <textarea class="input modal-form__address" name="address" placeholder="Адрес доставки"></textarea>
+                <button type="submit" class="modal__btn">Получить книгу</button>
+            </form>
+            <svg class="modal__close" width="20" height="20">
+                <use xlink:href="./static/img/svg/sprite.svg#close"></use>
+            </svg>
+        </div>
     </div>
+
+    <div class="md-overlay"></div>
+
     <script src="static/js/script.js"></script>
 </body>
 </html>
