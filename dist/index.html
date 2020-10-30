@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="static/fonts/OpenSans-Regular.woff" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="static/fonts/OpenSans-Regular.woff2" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="static/js/script.js" as="script">
-    <link rel="preload" href="./static/fonts/OpenSans-Regular.woff" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./static/fonts/OpenSans-Regular.woff2" as="font" type="font/woff" crossorigin>
-    <link rel="apple-touch-icon" sizes="180x180" href="./static/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./static/img/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="static/img/favicon/favicon-16x16.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <title>Анатолий Милов</title>
 </head>
@@ -55,8 +54,8 @@
                                 <div class="bg-circle bg-circle--2"></div>
                                 <div class="bg-circle bg-circle--3"></div>
                                 <div class="bg-circle bg-circle--4"></div>
-                                <div class="glow"></div>
                             </div>
+                            <div class="glow"></div>
                         </div>
                         <a class="hero-img__link" href="#"><span>&rarr;</span>Читать отзывы</a>
                     </div>
@@ -311,6 +310,17 @@
         </div>
     </footer>
 
+    <div class="overlay"></div>
+
+    <div class="modal">
+        <h4 class="modal__title">Получить книгу</h4>
+        <form class="form modal-form">
+            <input class="input modal-form__name" type="text" name="name" placeholder="ФИО">
+            <input  class="input modal-form__vk" type="text" name="vk" placeholder="Ссылка вконтакте">
+            <textarea class="input modal-form__address" name="address" placeholder="Адрес доставки"></textarea>
+            <button type="submit" class="modal__btn main-btn">Получить книгу</button>
+        </form>
+    </div>
     <script src="static/js/script.js"></script>
 </body>
 </html>

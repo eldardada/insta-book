@@ -46,7 +46,30 @@ window.addEventListener('load', function() {
 
     galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
 
-   
+
+   const forms = document.querySelectorAll('.form');
+
+   forms.forEach(form => {
+        
+        form.addEventListener('submit', e => {
+            let inputs = form.querySelectorAll('.input');
+            let allGood = true;
+
+            inputs.forEach(input => {
+                if(input.value === '') {
+                    input.classList.add('error');
+                    allGood = false;
+                }
+                else if(input.classList.contains('error')) {
+                    input.classList.remove('error');
+                }
+                if(!allGood) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+   });
     
 });
 
