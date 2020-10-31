@@ -1,4 +1,4 @@
-import Swiper, {Navigation, Thumbs, EffectFade} from 'swiper'; 
+import Swiper, {Navigation, Thumbs, EffectFade, Lazy} from 'swiper'; 
 
 Swiper.use([Navigation, Thumbs, EffectFade]);
 
@@ -102,7 +102,6 @@ window.addEventListener('load', function() {
 
     modals.forEach(modal => {
         let form = modal.querySelector('.form');
-        let erorBox = modal.querySelector('.box-error');
 
         form.addEventListener('submit', e => {
 
@@ -110,7 +109,6 @@ window.addEventListener('load', function() {
 
             let inputs = form.querySelectorAll('.input');
 
-            let error = '';
 
             inputs.forEach(input => {
                 if(input.value === '') {

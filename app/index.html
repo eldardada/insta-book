@@ -51,7 +51,7 @@
                 <div class="hero__content">
                     <div class="hero-img">
                         <div>
-                            <picture data-image="./static/img/hero-img">
+                            <picture>
                                 <source srcset="./static/img/hero-img.webp 1x"
                                         media="(min-width: 600px)"
                                         type="image/webp">
@@ -429,7 +429,6 @@
             <svg class="modal__close" width="20" height="20">
                 <use xlink:href="./static/img/svg/sprite.svg#close"></use>
             </svg>
-            <p class="box-error">Сообщение об ошибке</p>
             <div class="modal-success">
                 <svg class="modal-success__img" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 18 32.34 l -8.34 -8.34 -2.83 2.83 11.17 11.17 24 -24 -2.83 -2.83 z" stroke="inherit" fill="transparent"/>
@@ -444,7 +443,7 @@
             <form class="form modal-form">
                 <input class="input modal-form__name" type="text" name="user_name" placeholder="ФИО">
                 <input  class="input modal-form__vk" type="tel" name="user_phone" placeholder="Номер телефона" data-validate="phone">
-                <textarea class="input modal-form__address" name="user_message" placeholder="Сообщение (не обязательно)"></textarea>
+                <textarea class="input modal-form__address" name="user_message" data-unimportant placeholder="Сообщение (не обязательно)"></textarea>
                 <p class="box-error">Сообщение об ошибке</p>
                 <button class="modal-form__btn" type="submit">Оставить заявку</button>
             </form>
