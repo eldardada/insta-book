@@ -5,7 +5,7 @@
 
     $response = [
         'res' => false,
-        'error' => ''
+        'error' => false
     ];
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,38 +18,36 @@
         $token = "1477646798:AAFDMzcRFZaTqZM8zcPo_Rh-t3yjws3tmNo";
         $chat_id = "-417281943";
         
-        
-        if($vk === '') {
-            $arr = array(
-                'Тип заявки: ' => 'Обратный звонок',
-                'Имя: ' => $name,
-                'Телефон: ' => $phone,
-                'Сообщение: ' => $msg,
-            );
-        }
-        else if($phone === '') {
-            $arr = array(
-                'Тип заявки: ' => 'Заявка на книгу',
-                'Имя пользователя: ' => $name,
-                'Вк пользователя: ' => $vk,
-                'Адрес пользователя: ' => $address,
-            );
+        if($name !== '') {
+            
+            $arr = [];
+            $arr += ['Имя: ' => $name];
+            
+            if($phone !== '') {
+                $arr += ['Телефон: ' => $phone];
+            }
+            if($vk !== '') {
+                $arr += ['Вконтакте: ' => $vk];
+            }
+            if($address !== '') {
+                $arr += ['Адрес: ' => $address];
+            }
+            if($msg !== '') {
+                $arr += ['Сообщение: ' => $msg];
+            }
+            
         }
         else {
-            $arr = array(
-                'Имя пользователя: ' => $name,
-                'Вк пользователя: ' => $vk,
-                'Адрес пользователя: ' => $address,
-                'Телефон: ' => $phone,
-                'Сообщение: ' => $msg,
-            );
+            $response
         }
         
         foreach($arr as $key => $value) {
             $txt .= "<b>".$key."</b> ".$value."%0A";
         };
+
         if($response['error'] === '') {
-            $response['res'] = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
+            fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r")
+            $response['res'] = true;
         }
         
     }

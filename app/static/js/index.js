@@ -115,13 +115,13 @@ window.addEventListener('load', function() {
 
             e.preventDefault();
 
-            let error = '';
+            let error = false;
 
             inputs.forEach(input => {
                 if(input.value === '') {
                     if(!input.hasAttribute('data-unimportant')) {
                         input.classList.add('error');
-                        error = 'Заполните, пожалуйста, все поля'
+                        error = true;
                     }
                 }
                 else if(input.classList.contains('error')) {
@@ -129,7 +129,7 @@ window.addEventListener('load', function() {
                 }
             });
             
-            if(error !== '') {
+            if(!error) {
                 let formData = new FormData(form);
 
                 fetch('telegram.php', {
@@ -141,17 +141,11 @@ window.addEventListener('load', function() {
                     if(data.res) {
                         modal.classList.add('submit');
 
-                        erorBox.style.display = 'none';
-
                         setTimeout(function() {
                         hideModal(modal);
                         }, 1750);
                     
                     }
-                    // else {
-                        // erorBox.innerHTML = data.error;
-                        // erorBox.style.display = 'block';
-                    // }
                 });
             }
         });
