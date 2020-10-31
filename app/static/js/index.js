@@ -89,7 +89,7 @@ window.addEventListener('load', function() {
         })
     });
 
-    galleryTop.on('slideChangeTransitionStart', (slider) => feedbackContentSlider.slideTo(slider.activeIndex));
+    galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
 
     document.addEventListener('click', e => {
         const target = e.target;
@@ -129,7 +129,7 @@ window.addEventListener('load', function() {
             }
 
             inputs.forEach(input => {
-                
+
                 if(input.value === '') {
                     if(!input.hasAttribute('data-unimportant')) {
                         input.classList.add('error');
