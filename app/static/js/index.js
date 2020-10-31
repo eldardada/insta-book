@@ -99,15 +99,21 @@ window.addEventListener('load', function() {
             showModal(modal);
         }
     });
+    let phone = document.querySelector('[name="user_phone"]');
+    phone.addEventListener('input', e => {
+        phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
+        if(phone.value.length > 20) {
+            phone.value = '';
+        }
+    });
 
     modals.forEach(modal => {
         let form = modal.querySelector('.form');
+        let inputs = form.querySelectorAll('.input');
 
         form.addEventListener('submit', e => {
 
             e.preventDefault();
-
-            let inputs = form.querySelectorAll('.input');
 
             let error = '';
 
