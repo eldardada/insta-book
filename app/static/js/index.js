@@ -109,6 +109,7 @@ window.addEventListener('load', function() {
 
             let inputs = form.querySelectorAll('.input');
 
+            let error = '';
 
             inputs.forEach(input => {
                 if(input.value === '') {
@@ -122,30 +123,31 @@ window.addEventListener('load', function() {
                 }
             });
             
-            let formData = new FormData(form);
+            if(error !== '') {
+                let formData = new FormData(form);
 
-            fetch('telegram.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.res) {
-                    modal.classList.add('submit');
+                fetch('telegram.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.res) {
+                        modal.classList.add('submit');
 
-                    erorBox.style.display = 'none';
+                        erorBox.style.display = 'none';
 
-                    setTimeout(function() {
-                       hideModal(modal);
-                    }, 1750);
-                
-                }
-                // else {
-                    // erorBox.innerHTML = data.error;
-                    // erorBox.style.display = 'block';
-                // }
-            });
-
+                        setTimeout(function() {
+                        hideModal(modal);
+                        }, 1750);
+                    
+                    }
+                    // else {
+                        // erorBox.innerHTML = data.error;
+                        // erorBox.style.display = 'block';
+                    // }
+                });
+            }
         });
 
         modal.addEventListener('click', e => {
