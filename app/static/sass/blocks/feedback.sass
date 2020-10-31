@@ -21,6 +21,7 @@
             grid-template-columns: minmax(250px, 1fr)
             grid-template-rows: min-content
             grid-row-gap: 30px
+        
     &__title
         margin-bottom: 60px
     &__link
@@ -48,12 +49,12 @@
     .swiper-slide
         overflow: hidden
         border-radius: 10px
+        width: 410px
         img
-            width: 100%
             height: 410px
             object-fit: cover
             object-position: top
-            +xs-block
+            @media screen and ( max-width:  600px)
                 height: 300px
 
 .feedback-img
@@ -62,8 +63,9 @@
     +bp900-block
         justify-self: center
         grid-row: 1/2
-    @media screen and ( max-width:  446px)
+    @media screen and (max-width: 446px)
         justify-self: initial
+        width: 100%
 .feedback-text
     grid-column: 2/3
     grid-row: 1/2
@@ -78,7 +80,19 @@
         margin-bottom: 30px
         line-height: 30px
         font-size: 18px
-        min-height: 180px
+        height: 180px
+        overflow: auto
+        padding-right: 20px
+        &::-webkit-scrollbar
+            width: 10px 
+            background-color: rgba(#454545, 0.8)
+            border-radius: 5px
+            
+        &::-webkit-scrollbar-thumb 
+            background-color: var(--color-blue)
+            border-radius: 5px
+            box-shadow: inset 1px 1px 20px rgba(0, 0, 0, 0.35)
+    
     &__date
         display: block
         font-size: 24px

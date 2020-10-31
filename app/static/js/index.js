@@ -1,6 +1,6 @@
 import Swiper, {Navigation, Thumbs, EffectFade, Lazy} from 'swiper'; 
 
-Swiper.use([Navigation, Thumbs, EffectFade]);
+Swiper.use([Navigation, Thumbs, EffectFade, Lazy]);
 
 window.addEventListener('load', function() {
     const modals = document.querySelectorAll('.modal');
@@ -68,6 +68,8 @@ window.addEventListener('load', function() {
     });
 
     const galleryTop = new Swiper('.feedback-img .swiper-container',{
+        lazy: true,
+        preloadImages: false,
         slidesPerView: 1,
         slidesPerGroup: 1,
         effect: 'fade',
@@ -90,7 +92,7 @@ window.addEventListener('load', function() {
     });
 
     galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
-
+    
     document.addEventListener('click', e => {
         const target = e.target;
 

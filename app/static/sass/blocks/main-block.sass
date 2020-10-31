@@ -6,6 +6,10 @@
         z-index: 0
         top: 10px
         left: -55px
+        +sm-block
+            transform: scale(0.5)
+            left: -80px
+            top: -30px
 
 .bg
     border: 1px solid #465054
@@ -13,8 +17,6 @@
     width: 450px
     height: 450px
     animation: pulse 6s infinite ease-in-out
-    +sm-block
-        display: none
     &-circle
         position: absolute
         border-radius: 100%
@@ -45,6 +47,7 @@
     border-radius: 100px
     left: 50%
     top: 50%
+    background-color: transparent
     transform: translate(-50%, -50%)
     box-shadow: 0px 0px 100px 200px rgba(#00b4ff, 0.4)
     width: 100px
