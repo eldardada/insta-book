@@ -3,12 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Построй прибыльный бизнес в SMM">
+    <meta name="description" content="С помощью книги, которую я даю юесплатно">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eldardada.github.io/insta-book/dist/">
+    <meta property="og:title" content="Построй прибыльный бизнес в SMM">
+    <meta property="og:description" content="С помощью книги, которую я даю юесплатно">
+    <meta property="og:image" content="preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://eldardada.github.io/insta-book/dist/">
+    <meta property="twitter:title" content="Построй прибыльный бизнес в SMM">
+    <meta property="twitter:description" content="С помощью книги, которую я даю юесплатно">
+    <meta property="twitter:image" content="preview.jpg">
+
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="static/fonts/OpenSans-Regular.woff" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="static/fonts/OpenSans-Regular.woff2" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="static/js/script.js" as="script">
     <link rel="shortcut icon" href="static/img/favicon/favicon-16x16.png" type="image/png">
     <link rel="stylesheet" href="style.css">
+    
     <title>Анатолий Милов</title>
 </head>
 <body>
@@ -152,9 +170,15 @@
                     <div class="adv__adv-img adv-img">
                         <picture>
                             <source srcset="./static/img/advantages-img.webp 1x"
+                                    media="(min-width: 600px)"
                                     type="image/webp">
-                                    <img class="adv-img__img" src="./static/img/advantages-img.png" alt="Книга">
+                            <source srcset="./static/img/advantages-img.png 1x"
+                                    media="(min-width: 600px)">
+                            <source srcset="./static/img/advantages-img-sm.webp 1x"
+                                    type="image/webp">
+                            <img class="adv-img__img" src="./static/img/advantages-img-sm.png" alt="Книга">
                         </picture>
+
                         <button class="btn-blue" data-modal=".modal_book">Получить книгу</button>
                     </div>
                     <div class="adv-icons adv-icons--2">
@@ -303,37 +327,65 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-3-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-3-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-3-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-1-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-1-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-1-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-2-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-2-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-2-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-4-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-4-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-4-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-5-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-5-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-5-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-6-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-6-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-6-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                                 <div class="swiper-slide" >
                                     <div>
-                                        <img src="./static/img/feedback-people-7-sm.jpg" alt="">
+                                        <picture>
+                                            <source srcset="./static/img/feedback-people-7-sm.webp 1x"
+                                            type="image/webp">
+                                            <img src="./static/img/feedback-people-7-sm.jpg" alt="Покупатель">
+                                        </picture>
                                     </div>
                                 </div>
                             </div>

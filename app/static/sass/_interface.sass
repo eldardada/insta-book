@@ -19,10 +19,18 @@ body
         cursor: pointer
         svg
             transition: fill .3s, transform .3s
+            fill: var(--color-white)
+            &:hover
+                transform: scale(1.2)
+    .swiper-button-disabled
+        cursor: auto
+        svg
+            fill: #686868
+            transform: scale(1)
         &:hover
             svg
-                fill: var(--color-white)
-                transform: scale(1.2)
+                fill: #686868
+                transform: scale(1)
 
 .main-btn
     +font(16, 12)

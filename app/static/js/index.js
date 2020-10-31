@@ -8,6 +8,7 @@ window.addEventListener('load', function() {
     const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
     const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
 
+
     function showModal(modal) {
         modal.classList.add('md-show');
         body.style.overflow = 'hidden';
@@ -180,8 +181,7 @@ window.addEventListener('load', function() {
             galleryThumbsSlider.slidePrev();
         }
     });
-
-     
+   
 });
 
 
