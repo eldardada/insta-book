@@ -8,6 +8,20 @@ window.addEventListener('load', function() {
     const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
     const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
 
+    function showModal(modal) {
+        modal.classList.add('md-show');
+        body.style.overflow = 'hidden';
+    }
+
+    function hideModal(modal) {
+        modal.classList.remove('md-show');
+
+        if(modal.classList.contains('submit')) {
+            modal.classList.remove('submit');
+        }
+
+        body.style.overflow = '';
+    }
 
     const feedbackContentSlider = new Swiper('.feedback-text .swiper-container', {
         slidesPerView: 1,
@@ -25,25 +39,28 @@ window.addEventListener('load', function() {
         watchSlidesVisibility: true,
         breakpoints: {
             340: {
-                slidesPerView: 3,
+                slidesPerView: 3
             },
             500: {
-                slidesPerView: 4,
+                slidesPerView: 4
             },
-            625: {
-                slidesPerView: 5,
+            590: {
+                slidesPerView: 5
             },
-            900: {
-                slidesPerView: 4,
+            692: {
+                slidesPerView: 6
+            },
+            901: {
+                slidesPerView: 4
             }, 
             980: {
-                slidesPerView: 5,
+                slidesPerView: 5
             },
             1140: {
-                slidesPerView: 6,
+                slidesPerView: 6
             },
             1200: {
-                slidesPerView: 7,
+                slidesPerView: 7
             }
         },
         
@@ -65,8 +82,6 @@ window.addEventListener('load', function() {
         },
     });
 
-    
-
     inputsPhone.forEach(input => {
         input.addEventListener('input', () => {
             input.value = input.value.replace(/D/, '');
@@ -75,33 +90,14 @@ window.addEventListener('load', function() {
 
     galleryTop.on('slideChangeTransitionStart', (slider) => feedbackContentSlider.slideTo(slider.activeIndex));
 
-    function showModal(modal) {
-        modal.classList.add('md-show');
-        body.style.overflow = 'hidden';
-    }
-
-    function hideModal(modal) {
-        modal.classList.remove('md-show');
-
-        if(modal.classList.contains('submit')) {
-            modal.classList.remove('submit');
-        }
-
-        body.style.overflow = '';
-    }
-
     document.addEventListener('click', e => {
         const target = e.target;
 
         if(target.hasAttribute('data-modal')) {
-            const modalSelector = target.dataset.modal;
-            const modal = document.querySelector(modalSelector);
+            const modal = document.querySelector(target.dataset.modal);
             showModal(modal);
         }
     });
-
-
-
 
     modals.forEach(modal => {
         let form = modal.querySelector('.form');
@@ -110,12 +106,17 @@ window.addEventListener('load', function() {
         form.addEventListener('submit', e => {
 
             e.preventDefault();
-            modal.classList.add('submit');
+
             let inputs = form.querySelectorAll('.input');
+
+            let error = '';
 
             inputs.forEach(input => {
                 if(input.value === '') {
-                    input.classList.add('error');
+                    if(!input.hasAttribute('data-unimportant')) {
+                        input.classList.add('error');
+                        error = 'Заполните, пожалуйста, все поля'
+                    }
                 }
                 else if(input.classList.contains('error')) {
                     input.classList.remove('error');
@@ -132,10 +133,18 @@ window.addEventListener('load', function() {
             .then(data => {
                 if(data.res) {
                     modal.classList.add('submit');
+
+                    erorBox.style.display = 'none';
+
+                    setTimeout(function() {
+                       hideModal(modal);
+                    }, 1750);
+                
                 }
-                else {
-                    erorBox.innerHTML = data.error;
-                }
+                // else {
+                    // erorBox.innerHTML = data.error;
+                    // erorBox.style.display = 'block';
+                // }
             });
 
         });

@@ -366,6 +366,7 @@
                 </ul>
             </nav>
             <button class="main-btn" data-modal=".modal_call">Заказать звонок</button>
+            <small class="footer__developer">Разработчик сайта:<a href="https://vk.com/id148663094" target="_blank"> Эльдар Дадашов</a></small>
         </div>
     </footer>
 
@@ -382,12 +383,11 @@
             <svg class="modal__close" width="20" height="20">
                 <use xlink:href="./static/img/svg/sprite.svg#close"></use>
             </svg>
-            <p class="box-error"></p>
+            <p class="box-error">Сообщение об ошибке</p>
             <div class="modal-success">
                 <svg class="modal-success__img" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 18 32.34 l -8.34 -8.34 -2.83 2.83 11.17 11.17 24 -24 -2.83 -2.83 z" stroke="inherit" fill="transparent"/>
                 </svg>
-                <p class="modal-success__text">Ваша заявка успешно отправлена! Скоро мы Вами свяжемся!</p>
             </div>
         </div>
     </div>
@@ -399,17 +399,16 @@
                 <input class="input modal-form__name" type="text" name="user_name" placeholder="ФИО">
                 <input  class="input modal-form__vk" type="tel" name="user_phone" placeholder="Номер телефона" data-validate="phone">
                 <textarea class="input modal-form__address" name="user_message" placeholder="Сообщение (не обязательно)"></textarea>
-                <button type="submit" class="modal__btn">Оставить заявку</button>
+                <p class="box-error">Сообщение об ошибке</p>
+                <button class="modal-form__btn" type="submit">Оставить заявку</button>
             </form>
             <svg class="modal__close" width="20" height="20">
                 <use xlink:href="./static/img/svg/sprite.svg#close"></use>
             </svg>
-            <p class="box-error"></p>
             <div class="modal-success">
                 <svg class="modal-success__img" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 18 32.34 l -8.34 -8.34 -2.83 2.83 11.17 11.17 24 -24 -2.83 -2.83 z" stroke="inherit" fill="transparent"/>
                 </svg>
-                <p class="modal-success__text">Ваша заявка успешно отправлена! Скоро мы Вами свяжемся!</p>
             </div>
         </div>
     </div>

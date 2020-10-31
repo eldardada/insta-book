@@ -6,7 +6,7 @@
         display: flex
         align-items: center
         justify-content: space-between
-        padding: 40px 15px
+        padding: 40px 15px 50px
     &__nav
         +bp900-block
             position: absolute
@@ -16,4 +16,17 @@
             bottom: 100%
             display: flex
             justify-content: center
+    &__developer
+        position: absolute
+        bottom: 15px
+        font-size: 12px
+        left: 50%
+        white-space: nowrap
+        transform: translateX(-50%)
+        a
+            color: var(--color-blue)
+            &:hover
+                text-decoration: underline
+            
+                
     

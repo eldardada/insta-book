@@ -11,7 +11,7 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = trim($_POST['user_name']) ?? '';
         $phone = trim($_POST['user_phone']) ?? '';
-        $vk = trim($_POST['user_vk']) ?? 'v';
+        $vk = trim($_POST['user_vk']) ?? '';
         $msg = trim($_POST['user_message']) ?? '';
         $address = trim($_POST['user_address']) ?? '';
         
@@ -20,22 +20,14 @@
         
         
         if($vk === '') {
-            if($name === '' || $phone === '') {
-                $response['error'] = 'Заполните все поля!'
-            }
-            else if(mb_strlen($name, 'UTF8' < 2)) {
-                $err = 'Имя не короче 2-х символов!';
-            }
-            else {
-                $arr = array(
-                    'Тип заявки: ' => 'Обратный звонок',
-                    'Имя: ' => $name,
-                    'Телефон: ' => $phone,
-                    'Сообщение: ' => $msg,
-                );
-            }
+            $arr = array(
+                'Тип заявки: ' => 'Обратный звонок',
+                'Имя: ' => $name,
+                'Телефон: ' => $phone,
+                'Сообщение: ' => $msg,
+            );
         }
-        else {
+        else if($phone === '') {
             $arr = array(
                 'Тип заявки: ' => 'Заявка на книгу',
                 'Имя пользователя: ' => $name,
@@ -43,14 +35,23 @@
                 'Адрес пользователя: ' => $address,
             );
         }
+        else {
+            $arr = array(
+                'Имя пользователя: ' => $name,
+                'Вк пользователя: ' => $vk,
+                'Адрес пользователя: ' => $address,
+                'Телефон: ' => $phone,
+                'Сообщение: ' => $msg,
+            );
+        }
         
         foreach($arr as $key => $value) {
             $txt .= "<b>".$key."</b> ".$value."%0A";
         };
+        if($response['error'] === '') {
+            $response['res'] = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
+        }
         
-        $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
-        
-        $response['res'] = $sendToTelegram;
     }
 
     echo json_encode($response);
