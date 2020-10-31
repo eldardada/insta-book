@@ -38,14 +38,14 @@
             
         }
         else {
-            $response
+            $response['eror'] = true;
         }
         
         foreach($arr as $key => $value) {
             $txt .= "<b>".$key."</b> ".$value."%0A";
         };
 
-        if($response['error'] === '') {
+        if(!$response['error']) {
             fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r")
             $response['res'] = true;
         }
