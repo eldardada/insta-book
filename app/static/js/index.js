@@ -100,6 +100,7 @@ window.addEventListener('load', function() {
         }
     });
     let phone = document.querySelector('[name="user_phone"]');
+
     phone.addEventListener('input', e => {
         phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
        
@@ -128,6 +129,7 @@ window.addEventListener('load', function() {
             }
 
             inputs.forEach(input => {
+                
                 if(input.value === '') {
                     if(!input.hasAttribute('data-unimportant')) {
                         input.classList.add('error');
@@ -137,10 +139,9 @@ window.addEventListener('load', function() {
                 else if(input == phone) {
                     if(input.value.length < 5) addError(input);
                 }
-                else if(input.value.length < 2) addError(input);
-                else if(input.classList.contains('error')) {
-                        input.classList.remove('error');
-                }
+                else if(input.value.length < 2 ) addError(input);
+                else if(input.classList.contains('error')) input.classList.remove('error');
+                
             });
             
             if(!error) {
