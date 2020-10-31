@@ -102,6 +102,11 @@ window.addEventListener('load', function() {
     let phone = document.querySelector('[name="user_phone"]');
     phone.addEventListener('input', e => {
         phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
+       
+    });
+
+    phone.addEventListener('change', e => {
+        phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
         if(phone.value.length > 20) {
             phone.value = '';
         }
@@ -117,6 +122,11 @@ window.addEventListener('load', function() {
 
             let error = false;
 
+            function addError(input) {
+                input.classList.add('error');
+                error = true;
+            }
+
             inputs.forEach(input => {
                 if(input.value === '') {
                     if(!input.hasAttribute('data-unimportant')) {
@@ -124,8 +134,12 @@ window.addEventListener('load', function() {
                         error = true;
                     }
                 }
+                else if(input == phone) {
+                    if(input.value.length < 5) addError(input);
+                }
+                else if(input.value.length < 2) addError(input);
                 else if(input.classList.contains('error')) {
-                    input.classList.remove('error');
+                        input.classList.remove('error');
                 }
             });
             
@@ -140,11 +154,9 @@ window.addEventListener('load', function() {
                 .then(data => {
                     if(data.res) {
                         modal.classList.add('submit');
-
                         setTimeout(function() {
                         hideModal(modal);
                         }, 1750);
-                    
                     }
                 });
             }
