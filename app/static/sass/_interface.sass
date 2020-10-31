@@ -35,9 +35,15 @@ body
     color: var(--color-white)
     +sm-block
         padding: 10px 20px
+    &:focus
+        outline: none
     &:hover
         border: 1px solid transparent
         background-color: var(--color-blue)
+    &:active
+        border: 1px solid var(--color-blue)
+        background-color: rgba(#fff, 0.1)
+
 
 .btn-blue
     display: inline-block

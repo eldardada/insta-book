@@ -1,5 +1,6 @@
 .modal-content
     display: grid
+    position: relative
     width: 630px
     max-width: 80%
     grid-template-columns: 1fr 1fr
@@ -80,6 +81,37 @@
         position: absolute
         top: 20px
         right: 20px
+        z-index: 1000
+    &-success
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: var(--color-white)
+        border-radius: 10px
+        box-shadow: 0px 0px 70px 10px var(--color-blue)
+        opacity: 0
+        transition: opacity .3s
+        visibility: hidden
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        &__img
+            width: 350px
+            height: 300px
+            stroke: var(--color-blue)
+        &__text
+            line-height: 40px
+            text-align: center
+            +font(36, 20)
+            font-size: 36px
+            color: #000
+    &.submit
+        .modal-success
+            visibility: visible
+            opacity: 1
 
 
 .md-effect-8.md-modal

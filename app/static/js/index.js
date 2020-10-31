@@ -3,6 +3,11 @@ import Swiper, {Navigation, Thumbs, EffectFade} from 'swiper';
 Swiper.use([Navigation, Thumbs, EffectFade]);
 
 window.addEventListener('load', function() {
+    const modals = document.querySelectorAll('.modal');
+    const body = document.querySelector('body');
+    const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
+    const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
+
 
     const feedbackContentSlider = new Swiper('.feedback-text .swiper-container', {
         slidesPerView: 1,
@@ -12,7 +17,6 @@ window.addEventListener('load', function() {
         }
     });
 
-    const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
 
     const galleryThumbsSlider = new Swiper(galleryThumbs,  {
         slidesPerView: 2,
@@ -61,19 +65,15 @@ window.addEventListener('load', function() {
         },
     });
 
-    const modals = document.querySelectorAll('.modal');
-    const body = document.querySelector('body');
     
-    const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
 
     inputsPhone.forEach(input => {
-        input.addEventListener('change', () => {
-            console.log(input.value.math(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/, ''));
-
-
+        input.addEventListener('input', () => {
+            input.value = input.value.replace(/D/, '');
         })
     });
 
+    galleryTop.on('slideChangeTransitionStart', (slider) => feedbackContentSlider.slideTo(slider.activeIndex));
 
     function showModal(modal) {
         modal.classList.add('md-show');
@@ -82,6 +82,11 @@ window.addEventListener('load', function() {
 
     function hideModal(modal) {
         modal.classList.remove('md-show');
+
+        if(modal.classList.contains('submit')) {
+            modal.classList.remove('submit');
+        }
+
         body.style.overflow = '';
     }
 
@@ -95,23 +100,41 @@ window.addEventListener('load', function() {
         }
     });
 
+
+
+
     modals.forEach(modal => {
         let form = modal.querySelector('.form');
-        
+        let erorBox = modal.querySelector('.box-error');
+
         form.addEventListener('submit', e => {
+
+            e.preventDefault();
+            modal.classList.add('submit');
             let inputs = form.querySelectorAll('.input');
-            let allGood = true;
 
             inputs.forEach(input => {
                 if(input.value === '') {
                     input.classList.add('error');
-                    allGood = false;
                 }
                 else if(input.classList.contains('error')) {
                     input.classList.remove('error');
                 }
-                if(!allGood) {
-                    e.preventDefault();
+            });
+            
+            let formData = new FormData(form);
+
+            fetch('telegram.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.res) {
+                    modal.classList.add('submit');
+                }
+                else {
+                    erorBox.innerHTML = data.error;
                 }
             });
 
@@ -120,20 +143,14 @@ window.addEventListener('load', function() {
         modal.addEventListener('click', e => {
             const target = e.target;
             if(target.classList.contains('modal__close') || target.parentElement.classList.contains('modal__close')) {
-                modal.classList.remove('md-show');
-                body.style.overflow = '';
+                hideModal(modal);
             }
-        });
-    });
 
-    const overlay = document.querySelector('.md-overlay');
-
-    overlay.addEventListener('click', () => {
-        modals.forEach(modal => {
-            if(modal.classList.contains('md-show')) {
+            if(modal === e.target) {
                 hideModal(modal);
             }
         });
+
     });
 
     galleryThumbsSlider.on('click', function(el) {
@@ -154,6 +171,8 @@ window.addEventListener('load', function() {
             galleryThumbsSlider.slidePrev();
         }
     });
+
+     
 });
 
 
