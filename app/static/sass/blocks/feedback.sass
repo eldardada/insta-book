@@ -72,6 +72,11 @@
     +bp900-block
         grid-row: 3/4
         grid-column: 1/2
+    .swiper-container
+        .swiper-slide
+            &:not(.swiper-slide-active)
+                > *
+                    display: none
     &__feedback
         margin-bottom: 30px
         line-height: 30px

@@ -28,11 +28,14 @@ window.addEventListener('load', function() {
 
     const feedbackContentSlider = new Swiper('.feedback-text .swiper-container', {
         slidesPerView: 1,
+        allowTouchMove: false,
         effect: 'fade',
         fadeEffect: {
             crossFade: 'cascade'
-        }
+        },
     });
+
+    console.log(feedbackContentSlider.scrollbar)
 
 
     const galleryThumbsSlider = new Swiper(galleryThumbs,  {
@@ -85,7 +88,7 @@ window.addEventListener('load', function() {
           swiper: galleryThumbsSlider,
         },
         controller: {
-            control: feedbackContentSlider
+            control: feedbackContentSlider,
         }
     });
 
