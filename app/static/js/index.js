@@ -1,12 +1,14 @@
-import Swiper, {Navigation, Thumbs, EffectFade, Lazy} from 'swiper'; 
+import Swiper, {Navigation, Thumbs, EffectFade, Lazy, Controller} from 'swiper'; 
 
-Swiper.use([Navigation, Thumbs, EffectFade, Lazy]);
+Swiper.use([Navigation, Thumbs, EffectFade, Lazy, Controller]);
 
 window.addEventListener('load', function() {
+
     const modals = document.querySelectorAll('.modal');
     const body = document.querySelector('body');
     const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
     const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
+    const phone = document.querySelector('[name="user_phone"]');
 
 
     function showModal(modal) {
@@ -63,8 +65,7 @@ window.addEventListener('load', function() {
             1200: {
                 slidesPerView: 7
             }
-        },
-        
+        }
     });
 
     const galleryTop = new Swiper('.feedback-img .swiper-container',{
@@ -83,6 +84,9 @@ window.addEventListener('load', function() {
         thumbs: {
           swiper: galleryThumbsSlider,
         },
+        controller: {
+            control: feedbackContentSlider
+        }
     });
 
     inputsPhone.forEach(input => {
@@ -91,8 +95,6 @@ window.addEventListener('load', function() {
         })
     });
 
-    galleryTop.on('slideChange', slider => feedbackContentSlider.slideTo(slider.activeIndex));
-    
     document.addEventListener('click', e => {
         const target = e.target;
 
@@ -101,7 +103,6 @@ window.addEventListener('load', function() {
             showModal(modal);
         }
     });
-    let phone = document.querySelector('[name="user_phone"]');
 
     phone.addEventListener('input', e => {
         phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
