@@ -11,7 +11,7 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = trim($_POST['user_name']) ?? '';
         $phone = trim($_POST['user_phone']) ?? '';
-        $phone = str_replace("+", "%26", $phone);
+        $phone = str_replace("+", "%2B", $phone);
         $vk = trim($_POST['user_vk']) ?? '';
         
         $token = "1477646798:AAFDMzcRFZaTqZM8zcPo_Rh-t3yjws3tmNo";
