@@ -23,6 +23,7 @@
     "gulp-clean-css": "^4.2.0",
     "gulp-file-include": "^2.2.2",
     "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^6.2.0",
     "gulp-replace": "^1.0.0",
@@ -34,15 +35,17 @@
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^3.0.0",
     "gulp-w3c-html-validator": "^2.0.1",
-    "gulp-webp": "^4.0.1",
     "imagemin-jpeg-recompress": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
+    "path": "^0.12.7",
     "smart-grid": "^2.1.2",
     "webpack": "^5.2.0",
     "webpack-stream": "^6.1.0"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "inputmask": "^5.0.5",
+    "intl-tel-input": "^17.0.8",
     "normalize.scss": "^0.1.0",
     "reset-css": "^5.0.1",
     "swiper": "^6.3.4"

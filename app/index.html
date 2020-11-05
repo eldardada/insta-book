@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Построй прибыльный бизнес в SMM">
     <meta name="description" content="С помощью книги, которую я даю юесплатно">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Построй прибыльный бизнес в SMM">
     <meta property="og:description" content="С помощью книги, которую я даю юесплатно">
@@ -41,7 +39,7 @@
                             <li><a href="#feedback">Отзывы</a></li>
                         </ul>
                     </nav>
-                    <button class="main-btn" data-modal=".modal_call">Заказать звонок</button>
+                    <button class="main-btn" data-modal=".modal_book">Оставить заявку</button>
                 </header>
                 <div class="hero__content">
                     <div class="hero-img">
@@ -77,32 +75,6 @@
                         <p>С помощью книги, которую я даю бесплатно</p>
                     </div>
                     <div class="hero-info">
-                        <!-- <div class="hero-icons hero-text__icons">
-                            <div class="hero-icons__icon">
-                                <picture>
-                                    <source srcset="./static/img/hero-icon-1.webp 1x"
-                                            type="image/webp">
-                                    <img src="./static/img/hero-icon-1.png" alt="Адрес">
-                                </picture>
-                                <p>Оставь заявку и укажи адрес</p>
-                            </div>
-                            <div class="hero-icons__icon">
-                                <picture>
-                                    <source srcset="./static/img/hero-icon-2.webp 1x"
-                                            type="image/webp">
-                                        <img src="./static/img/hero-icon-2.png" alt="Посылка">
-                                </picture>
-                                <p>Забери книгу и оплати доставку</p>
-                            </div>
-                            <div class="hero-icons__icon">
-                                <picture>
-                                    <source srcset="./static/img/hero-icon-3.webp 1x"
-                                            type="image/webp">
-                                        <img src="./static/img/hero-icon-3.png" alt="Деньги">
-                                </picture>
-                                <p>Внедряй и зарабатывай</p>
-                            </div>
-                        </div> -->
                         <div class="hero-icons hero-text__icons">
                             <div class="hero-icons__icon">
                                 <svg class="hero-icons__image">
@@ -215,6 +187,7 @@
                                                     media="(min-width: 600px)">
                                             <img class="swiper-lazy" data-src="./static/img/feedback-people-3-md.jpg" alt="">
                                         </picture>
+                                        <div class="swiper-lazy-preloader"></div>
                                     </div>
                                     <div class="swiper-slide">
                                         <picture>
@@ -222,6 +195,8 @@
                                                     media="(min-width: 600px)">
                                             <img class="swiper-lazy" data-src="./static/img/feedback-people-1-md.jpg" alt="">
                                         </picture>
+                                        <div class="swiper-lazy-preloader"></div>
+
                                     </div>
                                     <div class="swiper-slide">
                                         <picture>
@@ -412,7 +387,7 @@
                     <li><a href="#feedback">Отзывы</a></li>
                 </ul>
             </nav>
-            <button class="main-btn" data-modal=".modal_call">Заказать звонок</button>
+            <button class="main-btn" data-modal=".modal_book">Оставить заявку</button>
             <small class="footer__developer">Разработчик сайта:<a href="https://vk.com/id148663094" target="_blank"> Эльдар Дадашов</a></small>
         </div>
     </footer>
@@ -420,12 +395,13 @@
 
     <div class="modal modal_book md-effect-8 md-modal">
         <div class="modal-content md-content">
-            <h4 class="modal__title">Получить книгу</h4>
+            <h4 class="modal__title">Оставить заявку</h4>
             <form action="telegram.php" method="POST" class="form modal-form">
-                <input class="input modal-form__name" type="text" name="user_name" placeholder="ФИО">
-                <input  class="input modal-form__vk" type="text" name="user_vk" placeholder="Ссылка вконтакте">
-                <textarea class="input modal-form__address" name="user_address" placeholder="Адрес доставки"></textarea>
-                <button type="submit" class="modal-form__btn">Получить книгу</button>
+                <input class="input modal-form__name" type="text" name="user_name" placeholder="Имя">
+                <p class="modal-form__text">Телефон или ссылка на профиль вконтакте:</p>
+                <input  class="input modal-form__vk" type="text" name="user_phone" placeholder="Номер телефона" >
+                <input  class="input modal-form__phone" type="text" name="user_vk" placeholder="Страница вк (предпочтительней)">
+                <button type="submit" class="modal-form__btn">Отправить</button>
             </form>
             <svg class="modal__close" width="20" height="20">
                 <use xlink:href="./static/img/svg/sprite.svg#close"></use>
@@ -437,30 +413,8 @@
             </div>
         </div>
     </div>
-
-    <div class="modal modal_call md-effect-8 md-modal">
-        <div class="modal-content md-content">
-            <h4 class="modal__title">Заказать звонок</h4>
-            <form class="form modal-form">
-                <input class="input modal-form__name" type="text" name="user_name" placeholder="ФИО">
-                <input  class="input modal-form__vk" type="tel" name="user_phone" placeholder="Номер телефона">
-                <textarea class="input modal-form__address" name="user_message" data-unimportant placeholder="Сообщение (не обязательно)"></textarea>
-                <p class="box-error">Сообщение об ошибке</p>
-                <button class="modal-form__btn" type="submit">Оставить заявку</button>
-            </form>
-            <svg class="modal__close" width="20" height="20">
-                <use xlink:href="./static/img/svg/sprite.svg#close"></use>
-            </svg>
-            <div class="modal-success">
-                <svg class="modal-success__img" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 18 32.34 l -8.34 -8.34 -2.83 2.83 11.17 11.17 24 -24 -2.83 -2.83 z" stroke="inherit" fill="transparent"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-   
-    <div class="md-overlay"></div>
     
+    <div class="md-overlay"></div>
     <script src="static/js/script.js"></script>
 </body>
 </html>

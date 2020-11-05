@@ -1,6 +1,6 @@
 <?php
 
-/* https://api.telegram.org/botXXXXXXXXXXXXXXXXXXXXXXX/getUpdates,
+/* https://api.telegram.org/botXXXXXXXXXXXXXXXXXXX/getUpdates,
 где, XXXXXXXXXXXXXXXXXXXXXXX - токен вашего бота, полученный ранее */
 
     $response = [
@@ -11,12 +11,11 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = trim($_POST['user_name']) ?? '';
         $phone = trim($_POST['user_phone']) ?? '';
+        $phone = str_replace("+", "%26", $phone);
         $vk = trim($_POST['user_vk']) ?? '';
-        $msg = trim($_POST['user_message']) ?? '';
-        $address = trim($_POST['user_address']) ?? '';
         
         $token = "1477646798:AAFDMzcRFZaTqZM8zcPo_Rh-t3yjws3tmNo";
-        $chat_id = "-417281943";
+        $chat_id = "-407863341";
         
         if($name !== '') {
             
@@ -28,12 +27,6 @@
             }
             if($vk !== '') {
                 $arr += ['Вконтакте: ' => $vk];
-            }
-            if($address !== '') {
-                $arr += ['Адрес: ' => $address];
-            }
-            if($msg !== '') {
-                $arr += ['Сообщение: ' => $msg];
             }
             
         }

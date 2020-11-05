@@ -1,9 +1,10 @@
-// sys
+// gulp
 import gulp from 'gulp';
 
-// else sys
+// gulp helpers
 import gulpif from 'gulp-if';
 import del from 'del';
+import fs from 'fs';
 
 // css
 import sass from 'gulp-sass';
@@ -15,7 +16,7 @@ import gcmq from 'gulp-group-css-media-queries';
 // browser sync
 import browserSync from 'browser-sync';
 
-// img
+// images
 import imagemin from 'gulp-imagemin';
 import imgCompress from 'imagemin-jpeg-recompress';
 import mozjpeg from 'imagemin-mozjpeg';
@@ -24,12 +25,10 @@ import mozjpeg from 'imagemin-mozjpeg';
 const tiny = 'API';
 import tingpng from 'gulp-tinypng';
 
-// smartgrid
-import smartgrid from 'smart-grid';
-
 // html
 import fileinclude from 'gulp-file-include';
 import htmlValidator from 'gulp-w3c-html-validator';
+import htmlmin from 'gulp-htmlmin';
 
 // svg sprite
 import svgmin from 'gulp-svgmin';
@@ -39,17 +38,18 @@ import replace from 'gulp-replace';
 
 // fonts 
 import ttf2woff2 from 'gulp-ttf2woff2';
-import fs from 'fs';
 import ttf2woff from 'gulp-ttf2woff';
 
 // js
 import webpack from 'webpack-stream';
 
 // smart-grid
+import smartgrid from 'smart-grid';
 import smartgridSettings from './smartgrid.js';
 
 // my variables for dev
 const isDev = process.argv.includes('--dev');
+const minImg = process.argv.includes('--min-img');
 const isProd = !isDev;
 
 import './conf.js';
@@ -78,7 +78,6 @@ const webConfig = {
   devtool: isDev ? 'eval-source-map' : 'none'
 }
 
-// delete dist dir
 export const clean = (done) => {
   let path = distDir;
   if(process.argv[3]) {
@@ -93,7 +92,7 @@ export const clean = (done) => {
   done();
 }
 
-const styles = () => {
+export const styles = () => {
   return gulp.src(config.app.sass)
           .pipe(gulpif(isDev, sourcemaps.init()))
           .pipe(sass().on('error', sass.logError))
@@ -111,22 +110,23 @@ const styles = () => {
           .pipe(browserSync.stream())
 }
 
-const scripts = () => {
+export const scripts = () => {
     return gulp.src(config.app.js)
            .pipe(webpack(webConfig))
            .pipe(gulp.dest(config.dist.js))
            .pipe(browserSync.stream())
 }
 
-const html = () => {
+export const html = () => {
     return gulp.src(html_arch)
            .pipe(fileinclude())
            .pipe(htmlValidator())
+           .pipe(gulpif(isProd, htmlmin({collapseWhitespace: true })))
            .pipe(gulp.dest(distDir))
            .pipe(browserSync.stream())
 }
 
-const php = () => {
+export const php = () => {
     return gulp.src(config.app.php)
            .pipe(gulp.dest(distDir))
            .pipe(browserSync.stream())
@@ -134,28 +134,28 @@ const php = () => {
 
 const images = () => {
 
-    return gulp.src([config.app.img, '!app/static/img/svg/**'])
+    return gulp.src(config.app.img)
 
-          //  .pipe(gulpif(isProd,
-          //    imagemin([
-          //      imgCompress({
-          //          loops: 4,
-          //          min: 70,
-          //          max: 80,
-          //          quality: 'high'
-          //      }),
-          //      mozjpeg({
-          //        quality: 60,
-          //        progressive: true,
-          //        tune: "ms-ssim",
-          //        smooth: 2
-          //      }),
-          //      imagemin.gifsicle(),
-          //      imagemin.svgo()
-          //    ])
-          //  ))
+           .pipe(gulpif(minImg,
+             imagemin([
+               imgCompress({
+                   loops: 4,
+                   min: 70,
+                   max: 80,
+                   quality: 'high'
+               }),
+               mozjpeg({
+                 quality: 60,
+                 progressive: true,
+                 tune: "ms-ssim",
+                 smooth: 2
+               }),
+               imagemin.gifsicle(),
+               imagemin.svgo()
+             ])
+           ))
  
-          //  .pipe(gulpif(isProd, tingpng(tiny) ))
+           .pipe(gulpif(minImg, tingpng(tiny) ))
  
            .pipe(gulp.dest(config.dist.img))
            .pipe(browserSync.stream())
@@ -173,7 +173,7 @@ const fontTtf2Woff2 = () => {
          .pipe(gulp.dest('./dist/static/fonts/'));
 }
 
-const checkWeight = (fontname) => {
+const checkWeight = fontname => {
   let weight = 400;
   
   switch (true) {
@@ -213,19 +213,22 @@ const checkWeight = (fontname) => {
     default:
       weight = 400;
   }
-
   return weight;
 }
 
-const fontsStyle = (done) => {
+const fontsStyle = done => {
+  
   fs.writeFile(srcFonts, '', cb);
+
   fs.readdir(appFonts, function (err, fontnames) {
     if (fontnames) {
       let c_fontname;
+      
       for (let fontname of fontnames) {
-				fontname = fontname.split('.');
-				fontname = fontname[0];
+        
+        fontname = fontname.split('.')[0];
         let font = fontname.split('-')[0];
+
         let weight = checkWeight(fontname);
 
         if (c_fontname != fontname) {
@@ -234,12 +237,11 @@ const fontsStyle = (done) => {
         else {
           console.log(c_fontname);
           console.log(fontname);
-
         }
         c_fontname = fontname;
       }
     }
-  })
+  });
 
   done();
 }
@@ -267,56 +269,87 @@ const svg = () => {
               }
             }
         }))
-        .pipe(gulp.dest('dist/static/img'));
+        .pipe(gulp.dest('dist/static/img'))
+        .pipe(browserSync.stream());
 }
 
-export const grid = (done) => {
-    smartgrid(appDirstatic + 'sass/libs', smartgridSettings)
+export const grid = done => {
+    smartgrid(`${appDirstatic}sass/libs`, smartgridSettings)
     done()
 };
 
-const searchCss = (namedir) => {
-  fs.readdir(namedir, (err, files) => {
-    if(files) {
-      
-      let endOnce = true;
+import path from 'path';
 
-      for(let i = 0; i < files.length; i++) {
+export const getFiles = (dir, files_) => {
+    
+  files_ = files_ || [];
 
-        let filename = files[i];
+    let files = fs.readdirSync(dir);
 
-        if(/\.sass/.test(filename) && /\./.test(filename)) {
-          return gulp.src(namedir + '/*.sass')
-          .pipe(gulp.dest(config.app.stylesLibs))
-          break;
+    for(let i in files){
+        let name = dir + '/' + files[i];
+        if (fs.statSync(name).isDirectory()){
+            getFiles(name, files_);
+        } else {
+            files_.push(name);
         }
-        else if(/\.scss/.test(filename)) {
-          return gulp.src(namedir + '/*.scss')
-          .pipe(gulp.dest(config.app.stylesLibs))
-          break;
-        }
-        else if(!(/\./.test(filename)) && !endOnce) {
-          searchCss(namedir + '/' + filename);
-        }
-        else if(i == files.length - 1 && endOnce) {
-          i = 0;
-          endOnce = false;
-        }
-      }
     }
-  });
+    files_ = files_.filter(file => {
+      return /\.scss$/.test(file);
+    });
+    
+    return files_;
+};
+
+// const searchCss = namedir => {
+//   fs.readdir(namedir, (err, files) => {
+//     if(files) {
+      
+//       letfilesList = files.filter(file => {
+//         return file.toLowerCase().includes('.scss');
+//       });
+
+//       console.log(filesList)
+
+//       // for(let i = start; i < files.length; i++) {
+
+//       //   let filename = files[i];
+
+//       //   if(/\.sass/.test(filename) && /\./.test(filename)) {
+//       //     return gulp.src(namedir + '/*.sass')
+//       //     .pipe(gulp.dest(config.app.stylesLibs))
+//       //   }
+//       //   else if(/\.scss/.test(filename)) {
+//       //     return gulp.src(namedir + '/*.scss')
+//       //     .pipe(gulp.dest(config.app.stylesLibs))
+//       //   }
+//       //   else if(!(/\./.test(filename)) && !endOnce) {
+//       //     console.log(filename)
+//       //     searchCss(namedir + '/' + filename);
+//       //   }
+//       //   else if(i == files.length - 1 && endOnce) {
+//       //     i = 0;
+//       //     endOnce = false;
+//       //   }
+//       // }
+//     }
+//   });
+// }
+
+export const csslib = () =>  {
+  const libName = process.argv[3].replace('--', '');
+  const files = getFiles(nodeModules + libName);
+
+  return gulp.src(files)
+         .pipe(gulp.dest(config.app.stylesLibs + '/' + libName));
 }
 
+export const fonts = gulp.series(gulp.parallel(fontTtf2Woff, fontTtf2Woff2), fontsStyle);
 
-export const csslib = () => {
-  searchCss(nodeModules + process.argv[3].replace('--', ''));
-} 
-
-export const fonts = gulp.series( fontTtf2Woff2, fontTtf2Woff, fontsStyle);
- 
-export const build = gulp.series(clean, fonts, images, scripts, styles, php, html, svg);
+export const build = gulp.series(clean, html, images, php, svg, scripts, fonts, styles);
 
 export const watch = gulp.series(build, () => {
+    
     browserSync.init({
 
       server: {
@@ -328,14 +361,13 @@ export const watch = gulp.series(build, () => {
     })
 
     gulp.watch(config.watch.html, html)
-    gulp.watch(config.watch.php, php)
-    gulp.watch(config.watch.sass, styles)
-    gulp.watch(config.watch.img, images)
-    gulp.watch(config.watch.js, scripts)
-    gulp.watch(config.watch.svg, svg)
     gulp.watch(config.watch.grid, grid)
-    gulp.watch(config.watch.fonts, gulp.parallel(ttf2woff, ttf2woff2))
-    gulp.watch(config.dist.fonts, fontsStyle)
+    gulp.watch(config.watch.img, images)
+    gulp.watch(config.watch.svg, svg)
+    gulp.watch(config.watch.js, scripts)
+    gulp.watch(config.watch.fonts, fonts)
+    gulp.watch(config.watch.sass, styles)
+    gulp.watch(config.watch.php, php)
   }
 );
       

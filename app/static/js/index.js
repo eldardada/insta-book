@@ -6,10 +6,7 @@ window.addEventListener('load', function() {
 
     const modals = document.querySelectorAll('.modal');
     const body = document.querySelector('body');
-    const inputsPhone = document.querySelectorAll('[data-validate="phone"]');
     const galleryThumbs = document.querySelector('.feedback-thumbs .swiper-container')
-    const phone = document.querySelector('[name="user_phone"]');
-
 
     function showModal(modal) {
         modal.classList.add('md-show');
@@ -34,9 +31,6 @@ window.addEventListener('load', function() {
             crossFade: 'cascade'
         },
     });
-
-    console.log(feedbackContentSlider.scrollbar)
-
 
     const galleryThumbsSlider = new Swiper(galleryThumbs,  {
         slidesPerView: 2,
@@ -71,9 +65,10 @@ window.addEventListener('load', function() {
         }
     });
 
-    const galleryTop = new Swiper('.feedback-img .swiper-container',{
-        lazy: true,
-        preloadImages: false,
+    const galleryTop = new Swiper('.feedback-img .swiper-container', {
+        lazy: {
+            loadPrevNext: true,
+        },
         slidesPerView: 1,
         slidesPerGroup: 1,
         effect: 'fade',
@@ -92,12 +87,6 @@ window.addEventListener('load', function() {
         }
     });
 
-    inputsPhone.forEach(input => {
-        input.addEventListener('input', () => {
-            input.value = input.value.replace(/D/, '');
-        })
-    });
-
     document.addEventListener('click', e => {
         const target = e.target;
 
@@ -106,49 +95,50 @@ window.addEventListener('load', function() {
             showModal(modal);
         }
     });
-
-    phone.addEventListener('input', e => {
-        phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
-       
-    });
-
-    phone.addEventListener('change', e => {
-        phone.value = phone.value.replace(/[А-Я а-я A-Z a-z]/g, '');
-        if(phone.value.length > 20) {
-            phone.value = '';
-        }
-    });
+  
 
     modals.forEach(modal => {
-        let form = modal.querySelector('.form');
-        let inputs = form.querySelectorAll('.input');
+        const form = modal.querySelector('.form');
+        const phone = modal.querySelector('[name="user_phone"]');
+        const vk = modal.querySelector('[name="user_vk"]');
+        const name = modal.querySelector('[name="user_name"]');
+        const text = modal.querySelector('.modal-form__text');
+
+        phone.addEventListener('input', () => {
+            phone.value = phone.value.replace(/[А-Яа-яA-Za-z]/g, '');
+        });
+    
+        phone.addEventListener('change', () => {
+            if(phone.value.length > 25) phone.value = '';
+        });
 
         form.addEventListener('submit', e => {
 
             e.preventDefault();
-
-            let error = false;
 
             function addError(input) {
                 input.classList.add('error');
                 error = true;
             }
 
-            inputs.forEach(input => {
+            let error = false;
 
-                if(input.value === '') {
-                    if(!input.hasAttribute('data-unimportant')) {
-                        input.classList.add('error');
-                        error = true;
-                    }
-                }
-                else if(input == phone) {
-                    if(input.value.length < 5) addError(input);
-                }
-                else if(input.value.length < 2 ) addError(input);
-                else if(input.classList.contains('error')) input.classList.remove('error');
-                
-            });
+            if(phone.value === '' && vk.value === '') {
+                text.style.color = 'red';
+            }
+            else {
+
+                if(text.style.color == 'red') text.style.color = '#000';
+
+                if(phone.value !== '' && phone.value.length < 5) addError(phone);
+                else if(phone.classList.contains('error')) phone.classList.remove('error');
+
+                if(vk.value !== '' && vk.value < 5) addError(vk);
+                else if(vk.classList.contains('error')) vk.classList.remove('error');
+            }
+
+            if(name.value.length < 2) addError(name);
+            else if(name.classList.contains('error')) name.classList.remove('error');
             
             if(!error) {
                 let formData = new FormData(form);

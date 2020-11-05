@@ -19,7 +19,7 @@ global.config = {
     // ur localhost
     localhost: 'http://localhost/wordpress/',
 
-    // dirs for files ( develop )
+    // dirs for files (develop)
     npm: {
         normalize: `${nodeModules}normalize.scss/*.scss`,
         reset: `${nodeModules}reset-css/sass/*.scss`,
@@ -29,7 +29,7 @@ global.config = {
         php: `${appDir}*.php`,
         js: `${appDirstatic}js/index.js`,
         sass: `${appDirstatic}sass/` + mainSass,
-        img: `${appDirstatic}img/**/*.+(jpg|jpeg|png|svg||webmanifest||webp)`,
+        img: [`${appDirstatic}img/**/*`, '!app/static/img/svg/**'],
         fonts: `${appDirstatic}fonts/**/*`,
         svg: `${appDirstatic}img/svg/**/*.svg`,
         stylesLibs: `${appDirstatic}sass/libs`,
@@ -47,7 +47,7 @@ global.config = {
         php: `${appDir}*.php`,
         js: `${appDirstatic}js/**/*.js`,
         sass: `${appDirstatic}sass/**/*.+(sass|scss)`,
-        img: `${appDirstatic}img/**/*`,
+        img: [`${appDirstatic}img/**/*`, `!${appDirstatic}img/svg/**/*`],
         svg: `${appDirstatic}img/svg/*.svg`,
         fonts: `${appDirstatic}fonts/**/*`,
         grid: `./smartgrid.js`
