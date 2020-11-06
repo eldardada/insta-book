@@ -125,6 +125,7 @@ window.addEventListener('load', function() {
 
             if(phone.value === '' && vk.value === '') {
                 text.style.color = 'red';
+                error = true;
             }
             else {
 
